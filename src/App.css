@@ -1,0 +1,32 @@
+/* root styles */
+@import url('https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap');
+body {
+    background: rgb(33,33,33);
+    margin: 0;
+    padding: 0;
+}
+#root {
+    height: 100vh;
+}
+.root-layout {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    height: 100%;
+}
+.side-nav-bar {
+    background: rgb(23,23,23);
+    padding: 10px;
+    color: rgba(255, 255, 255, 0.869);
+}
+.side-nav-bar h1 {
+    font-style: italic;
+}
+.side-nav-bar a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: Saira;
+}
+.side-nav-bar a.active {
+    text-decoration: underline;
+}
