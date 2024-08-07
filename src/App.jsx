@@ -2,6 +2,7 @@ import React, {useContext} from 'react'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
 import RootLayout from './Layouts/RootLayout'
 import { ProjectContext } from './Context/ProjectContext'
+import Board from './Components/Board'
 
 export default function App() {
   const {projects} = useContext(ProjectContext)
@@ -15,6 +16,11 @@ export default function App() {
               <Route
                 key={project.id}
                 path={`/projects/${project.name}`}
+                element={
+                  <Board
+                    content={project}
+                  />
+                }
               />
             )
           })
