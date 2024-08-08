@@ -4,7 +4,6 @@ import "./Column.css"
 export default function Column({column, tasks}) {
 
   
-  const [columnTasks, setColumnTasks] = useState(tasks)
 
   return (
     <div className="column">
@@ -12,7 +11,7 @@ export default function Column({column, tasks}) {
             <h3>{column.name}</h3>
         </header>
         <main>
-          {columnTasks.map(task => {
+          {tasks.map(task => {
             return (
               <p>{task.info}</p>
             )
@@ -21,4 +20,4 @@ export default function Column({column, tasks}) {
         </main>
     </div>
   )
-}
+} 
