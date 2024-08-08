@@ -1,6 +1,7 @@
 import React, {useContext}from 'react'
 import "./Task.css"
 import { ProjectContext } from '../../Context/ProjectContext'
+import { Trash, Pencil } from 'phosphor-react'
 
 export default function Task({task, color, content}) {
 
@@ -17,8 +18,8 @@ export default function Task({task, color, content}) {
       </section>
       <footer className="task-footer">
         <p className="task-date">Date Created</p>
-        <button>Edit</button>
-        <button onClick={() => deleteTask(content.id, task.id)}>Delete</button>
+        <button><Pencil/></button>
+        <button onClick={() => deleteTask(content.id, task.id)}><Trash/></button>
       </footer>
     </div>
   )
