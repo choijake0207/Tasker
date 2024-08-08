@@ -5,7 +5,10 @@ import "./Board.css"
 export default function Board({content}) {
   return (
     <div className="board">
-      <header className="board-header">{content.name}</header>
+      <header className="board-header">
+        {`/projects/${content.name}`}
+      </header>
+      <h1>{content.name}</h1>
       <main className="board-content">
         {content.columns.map(column => {
           return (
