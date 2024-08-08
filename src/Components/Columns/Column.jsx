@@ -35,6 +35,7 @@ export default function Column({column, tasks, color, content}) {
               <Task
                 task={task}
                 color={color}
+                content={content}
               />
             )
           })}
