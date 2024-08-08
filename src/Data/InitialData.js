@@ -7,16 +7,22 @@ export const initialProjects = [
                 id: 0,
                 columnId: "toDo",
                 info: "Create API requests",
+                category: "",
+                priority: "Med"
             },
             {
                 id: 1,
                 columnId: "inProgress",
-                info: "Configure database and ORM"
+                info: "Configure database and ORM",
+                category: "",
+                priority: "Low"
             },
             {
                 id: 2,
                 columnId: "completed",
-                info: "Create UI prototype"
+                info: "Create UI prototype",
+                category: "Design",
+                priority: "High"
             }
         ],
         columns: [
@@ -39,7 +45,15 @@ export const initialProjects = [
 export const projectTemplate = {
     id: null,
     name: "",
-    tasks: [],
+    tasks: [
+        {
+            id: "",
+            columnId: "",
+            info: "",
+            category: "",
+            priority: ""
+        }
+    ],
     columns: []
 }
 
