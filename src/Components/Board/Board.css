@@ -1,0 +1,10 @@
+.board {
+    margin: 10px;
+    width: 90%;
+}
+
+.board-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
