@@ -1,7 +1,9 @@
 import React, {useContext} from 'react'
 import {Outlet, NavLink} from "react-router-dom"
 import { ProjectContext } from '../Context/ProjectContext'
-import { Note } from 'phosphor-react'
+import { Note, FolderSimple } from 'phosphor-react'
+
+
 
 export default function RootLayout() {
     const {projects} = useContext(ProjectContext)
@@ -10,7 +12,7 @@ export default function RootLayout() {
         <nav className="side-nav-bar">
             <h1><Note/>tasker</h1>
             <div className="project-container">
-                <p>PROJECTS</p>
+                <p><FolderSimple/>PROJECTS</p>
                 {projects.map(project => {
                     return (
                         <NavLink to={`/projects/${project.name}`} key={project.id}>
@@ -21,7 +23,7 @@ export default function RootLayout() {
             </div>
          
         </nav>
-        <main>
+        <main className="main-screen">
             <Outlet/>
         </main>
     </div>
