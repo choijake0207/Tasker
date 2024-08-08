@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { projectTemplate } from '../../Data/InitialData'
 import "./TaskForm.css"
 
-export default function TaskForm({columnId, onClose}) {
+export default function TaskForm({columnId, onClose, addTask}) {
 
     const [newTask, setNewTask] = useState(projectTemplate.tasks[0])
  
@@ -14,6 +14,7 @@ export default function TaskForm({columnId, onClose}) {
     const createTask = (e) => {
         e.preventDefault()
         const task = {...newTask, id: crypto.randomUUID(), columnId: columnId}
+        addTask(task)
     }
 
   return (
@@ -22,9 +23,8 @@ export default function TaskForm({columnId, onClose}) {
             <h1>Create A New Task</h1>
             <form className="task-form" onSubmit={createTask}>
                 <label>Task Description</label>
-                <input
+                <textarea
                     className="info-input"
-                    type="text"
                     name="info"
                     maxLength={50}
                     value={newTask.info}
@@ -33,15 +33,19 @@ export default function TaskForm({columnId, onClose}) {
                 />
                 <label>Category Tags (optional)</label>
                 <input
+                    className="category-input"
                     type="text"
                     name="category"
                     value={newTask.category}
                     onChange={handleChange}
                 />
+                <label>Priority Level:</label>
                 <select
+                    className="priority-input"
                     name="priority"
                     value={newTask.priority}
                     onChange={handleChange}
+                    required
                 >
                     <option value="">Select Priority Level</option>
                     <option value="High">High</option>
@@ -49,8 +53,8 @@ export default function TaskForm({columnId, onClose}) {
                     <option value="Low">Low</option>
                 </select>
                 <div className="task-form-btn-container">
-                    <button type="button" onClick={onClose}>Close</button>
-                    <button type="submit">Create</button>
+                    <button className="close-btn"type="button" onClick={onClose}>Close</button>
+                    <button className="submit-btn"type="submit">Create</button>
                     
                 </div>
 
