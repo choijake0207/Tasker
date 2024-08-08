@@ -2,15 +2,19 @@ import React, {useState} from 'react'
 import { projectTemplate } from '../../Data/InitialData'
 import "./TaskForm.css"
 
-export default function TaskForm({columnId}) {
+export default function TaskForm({columnId, onClose}) {
 
     const [newTask, setNewTask] = useState(projectTemplate.tasks[0])
-    console.log(newTask)
+ 
     const handleChange = (e) => {
         const {name,value} = e.target
         setNewTask(prev => ({...prev,[name]: value }))
     }
 
+    const createTask = (e) => {
+        e.preventDefault()
+        const task = {...newTask, id: crypto.randomUUID(), columnId: columnId}
+    }
 
   return (
     <div className="task-form-overlay">
@@ -44,6 +48,12 @@ export default function TaskForm({columnId}) {
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                 </select>
+                <div className="task-form-btn-container">
+                    <button type="button" onClick={onClose}>Close</button>
+                    <button type="submit">Create</button>
+                    
+                </div>
+
             </form>
         
         </div>
