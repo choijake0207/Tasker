@@ -1,4 +1,4 @@
-export const projects = [
+export const initialProjects = [
     {
         id: 0,
         name: "Example Project",
@@ -42,3 +42,5 @@ export const projectTemplate = {
     tasks: [],
     columns: []
 }
+
+export const columnColors = ["black", "red", "orange", "yellow", "green", "blue"]
