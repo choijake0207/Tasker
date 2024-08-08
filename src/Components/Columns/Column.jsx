@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import Task from '../Task/Task'
 import "./Column.css"
 
 export default function Column({column, tasks}) {
@@ -13,7 +14,9 @@ export default function Column({column, tasks}) {
         <main>
           {tasks.map(task => {
             return (
-              <p>{task.info}</p>
+              <Task
+                task={task}
+              />
             )
           })}
          
