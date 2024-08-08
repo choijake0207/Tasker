@@ -8,7 +8,14 @@ export default function Task({task, color}) {
         <p className={`task-priority ${task.priority}`}>{task.priority}</p>
         {task.category && <p className="task-category">{task.category}</p> }
       </header>
-        <p>{task.info}</p>
+      <section className="task-details">
+        <h4 className="task-info">{task.info}</h4>
+      </section>
+      <footer className="task-footer">
+        <p className="task-date">Date Created</p>
+        <button>Edit</button>
+        <button>Delete</button>
+      </footer>
     </div>
   )
 }
