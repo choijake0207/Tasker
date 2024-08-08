@@ -23,9 +23,19 @@ export function ContextProvider({children}) {
       localStorage.setItem("projects", JSON.stringify(projects))
     }, [projects])
 
+    // add task
+    const addTask = (projectId, task) => {
+      setProjects(prev => prev.map(project => {
+        if (project.id === projectId) {
+          return {
+            ...project,
+            tasks: [...project.tasks, task]
+          }
+        } return project
+      }))
+    }
 
-
-    const values = {projects, setProjects}
+    const values = {projects, setProjects, addTask}
 
   return (
     <ProjectContext.Provider value={values}>
