@@ -6,7 +6,7 @@ import TaskForm from '../Forms/TaskForm'
 
 
 
-export default function Column({column, tasks, color, addTask}) {
+export default function Column({column, tasks, color}) {
 
   const [isFormOpen, setIsFormOpen] = useState(false)
   
@@ -17,7 +17,6 @@ export default function Column({column, tasks, color, addTask}) {
           <TaskForm 
             columnId={column.id}
             onClose={() => setIsFormOpen(false)}
-            addTask={addTask}
           />
         }
         <header className="column-header" style={{borderBottom: `3px solid ${color}`}}>
