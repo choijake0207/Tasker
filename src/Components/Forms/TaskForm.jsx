@@ -1,11 +1,12 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import { projectTemplate } from '../../Data/InitialData'
 import "./TaskForm.css"
+import { ProjectContext } from '../../Context/ProjectContext'
 
-export default function TaskForm({columnId, onClose, addTask}) {
+export default function TaskForm({columnId, onClose, content}) {
 
     const [newTask, setNewTask] = useState(projectTemplate.tasks[0])
- 
+    const {addTask} = useContext(ProjectContext)
     const handleChange = (e) => {
         const {name,value} = e.target
         setNewTask(prev => ({...prev,[name]: value }))
@@ -14,7 +15,7 @@ export default function TaskForm({columnId, onClose, addTask}) {
     const createTask = (e) => {
         e.preventDefault()
         const task = {...newTask, id: crypto.randomUUID(), columnId: columnId}
-        addTask(task)
+        addTask(content.id, task)
     }
 
   return (
