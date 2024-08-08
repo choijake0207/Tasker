@@ -1,6 +1,7 @@
 import React from 'react'
 import Column from '../Columns/Column'
 import "./Board.css"
+import { columnColors } from '../../Data/InitialData'
  
 export default function Board({content}) {
   return (
@@ -10,11 +11,12 @@ export default function Board({content}) {
       </header>
       <h2>{content.name}</h2>
       <main className="board-content">
-        {content.columns.map(column => {
+        {content.columns.map((column, index) => {
           return (
             <Column
+              key={column.id}
               column={column}
-              content={content}
+              color={columnColors[index]}
               tasks={content.tasks.filter(task => task.columnId === column.id)}
             />
           )
