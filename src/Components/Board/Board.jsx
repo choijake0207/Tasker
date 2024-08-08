@@ -16,6 +16,7 @@ export default function Board({content}) {
             <Column
               key={column.id}
               column={column}
+              content={content}
               color={columnColors[index]}
               tasks={content.tasks.filter(task => task.columnId === column.id)}
             />
@@ -23,7 +24,7 @@ export default function Board({content}) {
         })}
         <div className="column column-form">
           <header>
-            <button>+ ADD A COLUMN</button>
+            <button className="add-column-btn">+ ADD A COLUMN</button>
           </header>
         </div>
       </main>
