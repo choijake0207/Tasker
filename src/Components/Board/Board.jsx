@@ -11,6 +11,8 @@ export default function Board({content}) {
           return (
             <Column
               column={column}
+              content={content}
+              tasks={content.tasks.filter(task => task.columnId === column.id)}
             />
           )
         })}
