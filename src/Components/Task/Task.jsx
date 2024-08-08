@@ -1,7 +1,11 @@
-import React from 'react'
+import React, {useContext}from 'react'
 import "./Task.css"
+import { ProjectContext } from '../../Context/ProjectContext'
 
-export default function Task({task, color}) {
+export default function Task({task, color, content}) {
+
+  const {deleteTask} = useContext(ProjectContext)
+
   return (
     <div className="task" style={{borderLeft: `3px solid ${color}`}}>
       <header className="task-header">
@@ -14,7 +18,7 @@ export default function Task({task, color}) {
       <footer className="task-footer">
         <p className="task-date">Date Created</p>
         <button>Edit</button>
-        <button>Delete</button>
+        <button onClick={() => deleteTask(content.id, task.id)}>Delete</button>
       </footer>
     </div>
   )
