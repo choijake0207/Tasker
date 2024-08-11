@@ -50,5 +50,16 @@ export const projectTemplate = {
     columns: [],
     tasks: []
 }
+export const columnTemplate = {
+    id: "",
+    name: ""
+}
+export const taskTemplate = {
+    id: "",
+    columnId: "",
+    info: "",
+    category: "",
+    priority: ""
+}
 
 export const columnColors = ["purple", "blue", "green"]
