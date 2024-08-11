@@ -12,7 +12,7 @@ export default function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout/>}>
-        <Route index element={<Home/>}/>
+        <Route index element={<Home projects={projects}/>}/>
         {
           projects.map(project => {
             return (
@@ -21,6 +21,7 @@ export default function App() {
                 path={`/projects/${project.name}`}
                 element={
                   <Board
+                    key={project.id}
                     content={project}
                   />
                 }
