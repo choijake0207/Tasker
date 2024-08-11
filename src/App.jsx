@@ -4,6 +4,7 @@ import RootLayout from './Layouts/RootLayout'
 import { ProjectContext } from './Context/ProjectContext'
 import Board from './Components/Board/Board'
 import Home from './Components/Home/Home'
+import Projects from './Components/Projects/Projects'
 import "./App.css"
 
 export default function App() {
@@ -13,6 +14,7 @@ export default function App() {
     createRoutesFromElements(
       <Route path="/" element={<RootLayout/>}>
         <Route index element={<Home/>}/>
+        <Route path="/projects" element={<Projects/>} />
         {
           projects.map(project => {
             return (
