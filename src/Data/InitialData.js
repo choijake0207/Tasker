@@ -2,13 +2,14 @@ export const initialProjects = [
     {
         id: 0,
         name: "Example Project",
+        description: "",
         tasks: [
             {
                 id: 0,
                 columnId: "toDo",
                 info: "Create API requests",
                 category: "",
-                priority: "Med"
+                priority: "Medium"
             },
             {
                 id: 1,
@@ -54,7 +55,12 @@ export const projectTemplate = {
             priority: ""
         }
     ],
-    columns: []
+    columns: [
+        {
+            id: "",
+            name: ""
+        }
+    ]
 }
 
-export const columnColors = ["black", "red", "orange", "yellow", "green", "blue"]
+export const columnColors = ["purple", "blue", "green"]
