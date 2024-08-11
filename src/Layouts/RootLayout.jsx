@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react'
 import {Outlet, NavLink} from "react-router-dom"
 import { ProjectContext } from '../Context/ProjectContext'
-import { Note, CaretLeft, CaretDown } from 'phosphor-react'
+import { Note, CaretLeft, CaretDown, File} from 'phosphor-react'
 
 
 
@@ -14,12 +14,12 @@ export default function RootLayout() {
             <h1><Note/>tasker</h1>
             <div className="links-container">
                 <NavLink to="/">Home</NavLink>
-                <NavLink onClick={() => setExpandProjects(!expandProjects)}>Projects {expandProjects ? <CaretDown/> : <CaretLeft/>}</NavLink>
-                {expandProjects && <div className="project-container">
+                <p onClick={() => setExpandProjects(!expandProjects)}>Projects {expandProjects ? <CaretDown/> : <CaretLeft/>}</p>
+                {expandProjects && <div className={`project-link-container ${expandProjects ? 'open' : ''}`}>
                     {projects.map(project => {
                         return (
                             <NavLink to={`/projects/${project.name}`} key={project.id}>
-                                {project.name}
+                                <File/>{project.name}
                             </NavLink>
                         )
                     })}
