@@ -1,25 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import ProjectForm from '../Forms/ProjectForm'
 import "./Home.css"
 
-function ProjectCard ({project}) {
-    const navigate = useNavigate()
-    return (
-        <div className="project-card" onClick={() => navigate(`/projects/${project.name}`)}>
-            <h3>{project.name}</h3>
-            <p>{project.description}</p>
-        </div>
-    )
-}
-
-
 export default function Home({projects}) {
+    const [isFormOpen, setIsFormOpen] = useState(false)
   return (
     <div className="home">
+        {isFormOpen && <ProjectForm onClose={() => setIsFormOpen(false)}/>}
         <header className="home-header">
             <h1>All Projects</h1>
             <div className="tool-bar">
-                <button>+ New Project</button>
+                <button onClick={() => setIsFormOpen(true)}>+ New Project</button>
             </div>
             
         </header>
