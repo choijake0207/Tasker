@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react'
 import { projectTemplate } from '../../Data/InitialData'
-import "./TaskForm.css"
+import "./Form.css"
 import { ProjectContext } from '../../Context/ProjectContext'
 
 export default function TaskForm({columnId, onClose, content}) {
@@ -21,10 +21,10 @@ export default function TaskForm({columnId, onClose, content}) {
     }
 
   return (
-    <div className="task-form-overlay">
-        <div className="task-form-container">
+    <div className="form-overlay">
+        <div className="form-container">
             <h1>Create A New Task</h1>
-            <form className="task-form" onSubmit={createTask}>
+            <form className="form" onSubmit={createTask}>
                 <label>Task Description</label>
                 <textarea
                     className="info-input"
@@ -55,7 +55,7 @@ export default function TaskForm({columnId, onClose, content}) {
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                 </select>
-                <div className="task-form-btn-container">
+                <div className="form-btn-container">
                     <button className="close-btn"type="button" onClick={onClose}>Close</button>
                     <button className="submit-btn"type="submit">Create</button>
                     
