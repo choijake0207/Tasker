@@ -2,7 +2,7 @@ export const initialProjects = [
     {
         id: 0,
         name: "Example Project",
-        description: "",
+        description: "This is an example project meant to display the functionalities of this kanban app",
         tasks: [
             {
                 id: 0,
