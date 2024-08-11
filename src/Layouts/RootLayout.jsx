@@ -11,12 +11,13 @@ export default function RootLayout() {
     <div className="root-layout">
         <nav className="side-nav-bar">
             <h1><Note/>tasker</h1>
+            <NavLink to="/">Home</NavLink>
             <div className="project-container">
                 <p><FolderSimple/>PROJECTS</p>
                 {projects.map(project => {
                     return (
                         <NavLink to={`/projects/${project.name}`} key={project.id}>
-                            {project.name}
+                            - {project.name}
                         </NavLink>
                     )
                 })}
