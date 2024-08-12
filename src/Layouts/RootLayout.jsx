@@ -11,19 +11,19 @@ export default function RootLayout() {
   return (
     <div className="root-layout">
         <nav className="side-nav-bar">
-            <h1><Note/>tasker</h1>
+            <h1><Note/>Tasker</h1>
             <div className="links-container">
                 <NavLink to="/">Home</NavLink>
                 <p onClick={() => setExpandProjects(!expandProjects)}>Projects {expandProjects ? <CaretDown/> : <CaretLeft/>}</p>
-                {expandProjects && <div className={`project-link-container ${expandProjects ? 'open' : ''}`}>
+                <div className={`project-link-container ${expandProjects ? 'open' : 'close'}`}>
                     {projects.map(project => {
                         return (
                             <NavLink to={`/projects/${project.name}`} key={project.id}>
-                                <File/>{project.name}
+                                <File size="1em"/>{project.name}
                             </NavLink>
                         )
                     })}
-                </div>}
+                </div>
             </div>
         </nav>
         <main className="main-screen">
