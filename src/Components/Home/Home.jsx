@@ -14,8 +14,8 @@ export default function Home({projects}) {
             
         </header>
         <main className="project-container">
-            <div className="project-card" onClick={() => setIsFormOpen(true)}>
-                <PlusCircle size="1.25em"/> New Project
+            <div className="project-card" id="add-project-btn"onClick={() => setIsFormOpen(true)}>
+                <PlusCircle size="4em"/> New Project
             </div>
             {projects.map(project => {
                 return (
