@@ -1,17 +1,20 @@
 import React, {useContext}from 'react'
 import "./Task.css"
 import { ProjectContext } from '../../Context/ProjectContext'
-import { Trash, Pencil } from 'phosphor-react'
+import { Trash, Pencil, DotsThreeOutlineVertical } from 'phosphor-react'
 
 export default function Task({task, color, content}) {
 
   const {deleteTask} = useContext(ProjectContext)
 
   return (
-    <div className="task" style={{borderLeft: `3px solid ${color}`}}>
+    <div className="task">
       <header className="task-header">
-        <p className={`task-priority ${task.priority}`}>{task.priority}</p>
-        {task.category && <p className="task-category">{task.category}</p> }
+        <div className="task-header-tags">
+          <p className={`task-priority ${task.priority}`}>{task.priority}</p>
+          {task.category && <p className="task-category">{task.category}</p> }
+        </div>
+        <button className="task-edit-btn"><DotsThreeOutlineVertical size="1.2em"weight="bold"/></button>
       </header>
       <section className="task-details">
         <h4 className="task-info">{task.info}</h4>
