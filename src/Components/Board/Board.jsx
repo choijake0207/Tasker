@@ -2,14 +2,14 @@ import React from 'react'
 import Column from '../Columns/Column'
 import "./Board.css"
 import { columnColors } from '../../Data/InitialData'
+import { PlusCircle } from 'phosphor-react'
  
 export default function Board({content}) {
   return (
     <div className="board">
       <header className="board-header">
-        {`/projects/${content.name}`}
+        <h2>{content.name}</h2>
       </header>
-      <h2>{content.name}</h2>
       <main className="board-content">
         {content.columns.map((column, index) => {
           return (
@@ -23,8 +23,8 @@ export default function Board({content}) {
           )
         })}
         <div className="column column-form">
-          <header>
-            <button className="add-column-btn">+ ADD A COLUMN</button>
+          <header className="column-header column-form-header">
+            <button className="add-column-btn"><PlusCircle/> Add Column</button>
           </header>
         </div>
       </main>
