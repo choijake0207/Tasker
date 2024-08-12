@@ -62,4 +62,4 @@ export const taskTemplate = {
     priority: ""
 }
 
-export const columnColors = ["purple", "blue", "green"]
+export const columnColors = ["rgb(255,68,117)", "rgb(106,206,255)", "rgb(131,255,184)"]
