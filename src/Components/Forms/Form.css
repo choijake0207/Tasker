@@ -9,37 +9,46 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0.408);
+    background: rgba(0, 0, 0, 0.367);
 }
 .form-container {
     background: var(--foreground);
     width: 500px;
     padding: 20px;
     border-radius: 5px;
-    transform: translateY(-20%)
+    transform: translateY(-40%)
 }
 .form-container h1 {
     margin-top: 10px;
-    text-align: center;
+    color: var(--logo-color); 
+    font-weight: 700
 }
 .form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 10px; 
+}
+.highlight-text {
+    color: white;
 }
 input, select, textarea {
     border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.541);
     outline: none;
+    border: none;
     transition: .1s;
     padding: 5px;
+    background: var(--background);
+    color: rgba(255, 255, 255, 0.59);
+    border: 1px solid rgba(0, 0, 0, 0.518);
+    font-family: "Satoshi variable"
 }
 input:focus, textarea:focus {
-    background: var(--background);
+    border: 1px solid var(--logo-color)
 }
 .form label {
-    color: grey;
+    color: var(--links-color);
     font-weight: 400;
+    font-family: "Satoshi variable"
 }
 textarea {
     resize: none;
@@ -50,7 +59,8 @@ textarea {
 .form-btn-container {
     display: flex;
     justify-content: flex-end;
-    gap: 20px;
+    gap: 10px;
+    padding-top: 10px;
 }
 .form-btn-container * {
     padding: 5px;
@@ -60,11 +70,13 @@ textarea {
 }
 .close-btn {
     background: none;
-    border: 1px solid rgba(0, 0, 0, 0.541);
+    border: 2px solid var(--logo-color);
+    color: var(--logo-color);
+    font-weight: 400;
 }
 .submit-btn {
-    background: var(--nav-font-color);
+    background: var(--logo-color);
     color: white;
     border: none;
-    font-weight: bold;
+    font-weight: 400;
 }
