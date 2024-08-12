@@ -1,9 +1,23 @@
 /* root styles */
 @import url('https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&family=Saira:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --background: rgb(32,34,39);
+    --foreground: rgb(41,43,49);
+    --card: rgb(48, 51, 58);
+    --nav-font-color: rgb(255, 255, 255);
+    --links-color: rgb(162, 162, 162);
+
+}
 body {
-    background: rgb(33,33,33);
+    background: var(--background);
     margin: 0;
     padding: 0;
+    color: black;
+    overflow: hidden;
+    font-family: "satoshi variable" 
 }
 #root {
     height: 100vh;
@@ -14,19 +28,71 @@ body {
     height: 100%;
 }
 .side-nav-bar {
-    background: rgb(23,23,23);
-    padding: 10px;
-    color: rgba(255, 255, 255, 0.869);
+    background: var(--foreground);
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 .side-nav-bar h1 {
-    font-style: italic;
+    font-size: 25px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    color: var(--nav-font-color);
+    padding: 10px;
+    margin: 0;
+    font-family: "mononoki";
+
+  
 }
-.side-nav-bar a {
-    color: white;
+.side-nav-bar h1 svg {
+    transform: translateY(0%)
+}
+.links-container {
+    color: var(--links-color);
+    display: flex;
+    flex-direction: column;
+    font-family: "satoshi variable";
+
+}
+.links-container a, p {
+    color: var(--links-color);
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 15px;
     cursor: pointer;
-    font-family: Saira;
+
 }
-.side-nav-bar a.active {
-    text-decoration: underline;
+.links-container a:hover, .links-container p:hover {
+    color: white;
 }
+.links-container .active {
+    font-weight: 500;
+    color: white;
+}
+.project-link-container{
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    max-height: 0;
+    overflow: hidden;
+    font-size: .9em;
+    background: rgba(58, 58, 58, 0.475);
+    transition: transform .3s ease-out;
+    transform: scaleY(0)
+}
+.project-link-container a{
+    display: flex;
+    gap: 5px;
+    justify-content: flex-start; 
+    padding: 5px;
+}
+.project-link-container.open {
+    max-height: 300px;
+    transform:scaleY(1)
+}
+
+
