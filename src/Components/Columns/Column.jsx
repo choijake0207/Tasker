@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import Task from '../Task/Task'
 import "./Column.css"
-import { Circle } from 'phosphor-react'
+import { Circle, DotsThreeOutlineVertical, Plus } from 'phosphor-react'
 import TaskForm from '../Forms/TaskForm'
 
 
@@ -26,8 +26,9 @@ export default function Column({column, tasks, color, content}) {
               <p>{column.name}</p>
               <p>( {tasks.length} )</p>
             </div>
-            
-            <button className="add-task-btn" onClick={()=> setIsFormOpen(!isFormOpen)}>+ ADD TASK</button>
+            <div className="column-header-buttons">
+              <button className="add-task-btn" onClick={()=> setIsFormOpen(!isFormOpen)}><Plus weight="bold"/></button>
+            </div>
         </header>
         <main>
           {tasks.map(task => {
@@ -41,6 +42,7 @@ export default function Column({column, tasks, color, content}) {
           })}
          
         </main>
+      
 
     </div>
   )
