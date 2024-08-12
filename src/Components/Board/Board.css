@@ -1,10 +1,26 @@
 .board {
-    margin: 10px;
-    width: 90%;
+ display: flex;
+ flex-direction: column;
+ position: relative;
+ height: 100vh;
+ padding: 25px;
 }
+.board-header {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: "satoshi variable";
+    font-weight: bolder;
+    font-size: 15px;
+}
+.board h2 {
+  margin: 0;
+  color: white;
 
+}
 .board-content {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    display: flex;
+    gap: 5px; 
+    justify-content: flex-start;
 }
