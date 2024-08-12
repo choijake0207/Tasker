@@ -27,8 +27,8 @@ export default function Column({column, tasks, color, content}) {
               <p>( {tasks.length} )</p>
             </div>
             <div className="column-header-buttons">
-              <button className="add-task-btn" onClick={()=> setIsFormOpen(!isFormOpen)}><Plus weight="bold"/></button>
-              <button className="column-edit-button"><DotsThreeOutlineVertical/></button>
+              <button className="add-task-btn" onClick={()=> setIsFormOpen(!isFormOpen)}><Plus size="1.2em" weight="bold"/></button>
+              <button className="column-edit-button"><DotsThreeOutlineVertical size="1.2em" weight="bold"/></button>
             </div>
         </header>
         <main>
