@@ -9,6 +9,7 @@
     --card: rgb(48, 51, 58);
     --nav-font-color: rgb(255, 255, 255);
     --links-color: rgb(162, 162, 162);
+    --logo-color: rgb(82,100,191);
 
 }
 body {
@@ -32,39 +33,46 @@ body {
     display: flex;
     flex-direction: column;
     gap: 25px;
+
 }
 .side-nav-bar h1 {
-    font-size: 25px;
+    font-size: 1.75em;
     display: flex;
     gap: 5px;
     align-items: center;
     color: var(--nav-font-color);
-    padding: 10px;
+    padding: 15px;
+    padding-top: 20px;
     margin: 0;
-    font-family: "mononoki";
-
-  
+    font-family: "Mononoki"; 
+    border-bottom: 1px solid var(--links-color);
 }
 .side-nav-bar h1 svg {
-    transform: translateY(0%)
+    transform: translateY(0%);
+    color: var(--logo-color);
 }
 .links-container {
     color: var(--links-color);
     display: flex;
     flex-direction: column;
+    gap: 15px;
     font-family: "satoshi variable";
+    padding: 15px;
 
 }
-.links-container a, p {
+.links-container a, .links-container p {
     color: var(--links-color);
     text-decoration: none;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding-left: 15px;
-    padding-right: 15px;
+    gap: 10px;
     cursor: pointer;
-
+    outline: none;
+    user-select: none;
+    margin: 0;
+}
+.links-container p > svg:last-of-type {
+    margin-left: auto;
 }
 .links-container a:hover, .links-container p:hover {
     color: white;
@@ -76,23 +84,55 @@ body {
 .project-link-container{
     display: flex;
     flex-direction: column;
-    padding-left: 20px;
+    gap: 10px;
+    padding-left: 10px;
+    border-left: 1px solid var(--links-color);
     max-height: 0;
-    overflow: hidden;
-    font-size: .9em;
-    background: rgba(58, 58, 58, 0.475);
-    transition: transform .3s ease-out;
-    transform: scaleY(0)
-}
-.project-link-container a{
-    display: flex;
-    gap: 5px;
-    justify-content: flex-start; 
-    padding: 5px;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
 }
 .project-link-container.open {
-    max-height: 300px;
-    transform:scaleY(1)
+    animation-name: dropDown
 }
+.project-link-container.close {
+    animation-name: pullUp;
+    animation-duration: .3s;
+}
+
+
+
+.project-link-container a{
+    display: flex;
+    font-size: .95em;
+    gap: 5px;
+    justify-content: flex-start;
+    user-select: none;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+}
+.project-link-container svg {
+    flex-shrink: 0;
+}
+
+@keyframes dropDown {
+    0% {
+        max-height: 0
+    }
+    100% {
+        max-height: 300px;
+    }
+}
+@keyframes pullUp {
+    0% {
+        max-height: 300px;
+    }
+   
+    100% {
+        max-height: 0
+    }
+}
+
 
 
