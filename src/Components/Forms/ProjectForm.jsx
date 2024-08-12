@@ -19,7 +19,7 @@ export default function ProjectForm({onClose}) {
   return (
     <div className="form-overlay">
         <div className="form-container">
-            <h1>Create A New Project</h1>
+            <h1><span className="highlight-text">Create</span> a new project</h1>
             <form className="form" onSubmit={createProject}>
                 <label>Project Name</label>
                 <input
@@ -27,6 +27,7 @@ export default function ProjectForm({onClose}) {
                     value={newProject.name}
                     name="name"
                     onChange={handleChange}
+                    maxLength={20}
                     required
                 />
                 <label>Project Description (optional)</label>

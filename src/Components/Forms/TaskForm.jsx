@@ -23,7 +23,7 @@ export default function TaskForm({columnId, onClose, content}) {
   return (
     <div className="form-overlay">
         <div className="form-container">
-            <h1>Create A New Task</h1>
+            <h1><span className="highlight-text">Create</span> a new task</h1>
             <form className="form" onSubmit={createTask}>
                 <label>Task Description</label>
                 <textarea
