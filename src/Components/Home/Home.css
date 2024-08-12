@@ -1,49 +1,91 @@
 .home {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     padding: 25px;
 }
 .home-header {
     display: flex;
     gap: 20px;
     align-items: center;
+    padding: 10px;
+    border-bottom: 5px solid var(--logo-color);
 }
 .home-header h1 {
-    font-weight: 400;
+    font-weight: 500;
     font-size: 2em;
+    color: white;
+    margin: 0;
+
 }
 .home-header button {
-    background: rgb(12, 172, 12);
-    color: white;
-    font-weight: bolder;
-    border: none;
+    color:white;
+    background: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    border: 1px solid white;
     border-radius: 2.5px;
-    padding: 10px;
+    padding: 5px;
     cursor: pointer;
-}
-.home-header button:hover {
-    background: rgb(11, 146, 11);
+    font-size: 1em;
 }
 .project-container {
     display: grid;
-    grid-template-columns: repeat(3, 250px);
-    gap: 15px;
+    grid-template-columns: repeat(4, 270px);
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 20px;
 }
 .project-card {
     background: var(--foreground);
     border-radius: 5px;
-    gap: 15px;
-    box-shadow: 2px 2px 5px var(--box-shadow-color);
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    padding: 25px;
-    width: 250px;
-    height: 250px;
+    padding: 20px;
+    height: 200px;
+    width: 225px;
+    transition: .1s;
+    border: 2px solid rgb(53, 56, 63);
+    color: white;
+}
+.project-card:hover {
+    border: 2px solid rgba(255, 255, 255, 0.501);
+}
+.project-card button {
+    place-self: flex-end;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--links-color);
+    padding: 0;
+}
+.project-card button:hover {
+    color: white;
+}
+.project-card div {
+    height: 100%;
     cursor: pointer;
 }
 .project-card h3 {
-    border-bottom: 5px solid var(--background);
-}
-.project-card > * {
+    padding: 0px;
+    color: var(--logo-color);
     margin: 0;
-    padding: 0;
 }
+.project-card p {
+    padding: 0;
+    margin-top: 10px;
+}
+#add-project-btn {
+    justify-content: center;
+    align-items: center;
+    color: var(--links-color);
+    gap: 10px;
+}
+#add-project-btn:hover {
+    color: white;
+}
+
