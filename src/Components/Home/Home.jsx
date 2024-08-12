@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import ProjectForm from '../Forms/ProjectForm'
+import ProjectCard from './ProjectCard'
+import { PlusCircle } from 'phosphor-react'
 import "./Home.css"
 
 export default function Home({projects}) {
@@ -10,12 +11,12 @@ export default function Home({projects}) {
         {isFormOpen && <ProjectForm onClose={() => setIsFormOpen(false)}/>}
         <header className="home-header">
             <h1>All Projects</h1>
-            <div className="tool-bar">
-                <button onClick={() => setIsFormOpen(true)}>+ New Project</button>
-            </div>
             
         </header>
         <main className="project-container">
+            <div className="project-card" onClick={() => setIsFormOpen(true)}>
+                <PlusCircle size="1.25em"/> New Project
+            </div>
             {projects.map(project => {
                 return (
                     <ProjectCard
