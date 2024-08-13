@@ -10,7 +10,7 @@ export default function Board({content}) {
   
   return (
     <div className="board">
-      {isFormOpen && <ColumnForm onClose={() => setIsFormOpen(false)}/>}
+      {isFormOpen && <ColumnForm onClose={() => setIsFormOpen(false)} content={content}/>}
       <header className="board-header">
         <h2>{content.name}</h2>
       </header>
