@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { columnTemplate } from '../../Data/InitialData'
 
-export default function ColumnForm() {
+export default function ColumnForm({onClose}) {
 
     const [newColumn, setNewColumn] = useState(columnTemplate)
     const handleChange = (e) => {
@@ -17,6 +17,7 @@ export default function ColumnForm() {
   return (
     <div className="form-overlay">
         <div className="form-container">
+            <h1><span className="highlight-text">Create</span> a new column</h1>
             <form className="form" onSubmit={createColumn}>
                 <label>Column Name</label>
                 <input
