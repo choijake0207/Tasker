@@ -25,6 +25,10 @@ export default function ColumnForm() {
                     onChange={handleChange}
                     value={newColumn.name}
                 />
+                <div className="form-btn-container">
+                    <button className="close-btn"type="button" onClick={onClose}>Close</button>
+                    <button className="submit-btn"type="submit">Create</button>
+                </div>
             </form>
         </div>
     </div>
