@@ -1,8 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import { columnTemplate } from '../../Data/InitialData'
+import { ProjectContext } from '../../Context/ProjectContext'
 
-export default function ColumnForm({onClose}) {
-
+export default function ColumnForm({onClose, content}) {
+    const {addColumn} = useContext(ProjectContext)
     const [newColumn, setNewColumn] = useState(columnTemplate)
     const handleChange = (e) => {
         const {name, value} = e.target
@@ -11,7 +12,9 @@ export default function ColumnForm({onClose}) {
     const createColumn = (e) => {
         e.preventDefault()
         const column = {...newColumn, id: crypto.randomUUID()}
+        addColumn(content.id, column)
         setNewColumn(columnTemplate)
+        onClose()
     }
 
   return (
