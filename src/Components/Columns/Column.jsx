@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import Task from '../Task/Task'
+import ColumnMenu from '../Menus/ColumnMenu'
 import "./Column.css"
 import { Circle, DotsThreeOutlineVertical, Plus } from 'phosphor-react'
 import TaskForm from '../Forms/TaskForm'
@@ -9,6 +10,7 @@ import TaskForm from '../Forms/TaskForm'
 export default function Column({column, tasks, color, content}) {
 
   const [isFormOpen, setIsFormOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   
  
   return (
@@ -28,7 +30,8 @@ export default function Column({column, tasks, color, content}) {
             </div>
             <div className="column-header-buttons">
               <button className="add-task-btn" onClick={()=> setIsFormOpen(!isFormOpen)}><Plus size="1.2em" weight="bold"/></button>
-              <button className="column-edit-button"><DotsThreeOutlineVertical size="1.2em" weight="bold"/></button>
+              {isMenuOpen && <ColumnMenu content={content} column={column}/>}
+              <button className="column-edit-button" onClick={() => setIsMenuOpen(!isMenuOpen)}><DotsThreeOutlineVertical size="1.2em" weight="bold"/></button>
             </div>
         </header>
        {tasks.length > 0 &&  <main>
