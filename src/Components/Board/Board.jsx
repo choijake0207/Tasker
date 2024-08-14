@@ -13,6 +13,9 @@ export default function Board({content}) {
       {isFormOpen && <ColumnForm onClose={() => setIsFormOpen(false)} content={content}/>}
       <header className="board-header">
         <h2>{content.name}</h2>
+        <div className="board-toolbar">
+          <button className="add-column-btn" onClick={() => setIsFormOpen(true)}><PlusCircle/>Add Column</button>
+        </div>
       </header>
       <main className="board-content">
         {content.columns.map((column, index) => {
@@ -26,11 +29,8 @@ export default function Board({content}) {
             />
           )
         })}
-        <div className="column column-form">
-          <header className="column-header column-form-header">
-            <button className="add-column-btn" onClick={() => setIsFormOpen(true)}><PlusCircle/> Add Column</button>
-          </header>
-        </div>
+
+
       </main>
     </div>
   )
