@@ -6,10 +6,8 @@ import { DndContext } from '@dnd-kit/core'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <DndContext>
-      <ContextProvider>
-        <App />
-      </ContextProvider>
-    </DndContext>
+    <ContextProvider>
+      <App />
+    </ContextProvider>
   </StrictMode>,
 )
