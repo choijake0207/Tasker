@@ -1,0 +1,22 @@
+.popup-menu {
+    z-index: 100;
+    position: absolute;
+    background: var(--background);
+    display: flex;
+    flex-direction: column;
+    top: 100%;
+    width: 100px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px vaR(--background);
+}
+.popup-delete-btn, .popup-edit-btn {
+    background: none;
+    padding: 10px;
+    border: none;
+    font-weight: bold;
+    font-family: "satoshi variable";
+    cursor:pointer
+}
+.popup-menu > .popup-delete-btn:hover {
+    color: red;
+}
