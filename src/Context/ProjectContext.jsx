@@ -59,6 +59,18 @@ export function ContextProvider({children}) {
         return project
       }))
     }
+    const deleteColumn = (projectId, columnId) => {
+      setProjects(prev => prev.map(project => {
+        if (project.id === projectId) {
+          const updatedColumns = project.columns.filter(column => column.id !== columnId)
+          return {
+            ...project,
+            columns: updatedColumns
+          }
+        }
+        return project
+      }))
+    }
     // add project
     const addProject = (project) => {
       setProjects(prev => ([...prev, project]))
