@@ -15,7 +15,7 @@ export default function TaskForm({columnId, onClose, content}) {
     const createTask = (e) => {
         e.preventDefault()
         const task = {...newTask, id: crypto.randomUUID(), columnId: columnId}
-        addTask(content.id, task)
+        addTask(content.id, columnId, task)
         setNewTask(taskTemplate)
         onClose()
     }
