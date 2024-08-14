@@ -35,7 +35,8 @@ export default function Board({content}) {
         <main className="board-content empty">
           <FolderOpen size="8em"/>
           <h3>Nothing Here To See Yet</h3>
-          <p>Get started by Creating Columns</p>
+          <p>Get started by <span className="highlight-text" onClick={()=>setIsFormOpen(true)}>Creating Columns</span>
+          </p>
         </main>
       }
     </div>
