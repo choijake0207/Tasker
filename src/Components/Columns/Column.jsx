@@ -31,7 +31,7 @@ export default function Column({column, tasks, color, content}) {
               <button className="column-edit-button"><DotsThreeOutlineVertical size="1.2em" weight="bold"/></button>
             </div>
         </header>
-        <main>
+       {tasks.length > 0 &&  <main>
           {tasks.map(task => {
             return (
               <Task
@@ -42,7 +42,7 @@ export default function Column({column, tasks, color, content}) {
             )
           })}
          
-        </main>
+        </main>}
       
 
     </div>
