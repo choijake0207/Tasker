@@ -26,7 +26,7 @@ export default function Board({content}) {
                 column={column}
                 content={content}
                 color={columnColors[index]}
-                tasks={content.tasks.filter(task => task.columnId === column.id)}
+                tasks={column.tasks}
               />
             )
           })}
