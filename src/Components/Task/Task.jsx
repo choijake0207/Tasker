@@ -22,7 +22,7 @@ export default function Task({task, color, content}) {
       <footer className="task-footer">
         <p className="task-date">Date Created</p>
         <button><Pencil/></button>
-        <button onClick={() => deleteTask(content.id, task.id)}><Trash/></button>
+        <button onClick={() => deleteTask(content.id, task.columnId, task.id)}><Trash/></button>
       </footer>
     </div>
   )
