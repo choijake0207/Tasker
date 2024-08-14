@@ -43,13 +43,20 @@ export function ContextProvider({children}) {
       }))
     }
     // delete task
-    const deleteTask = (projectId, taskId) => {
+    const deleteTask = (projectId, columnId, taskId) => {
       setProjects(prev => prev.map(project => {
         if (project.id === projectId) {
-          const updatedTasks = project.tasks.filter(task => task.id !== taskId)
           return {
             ...project,
-            tasks: updatedTasks
+            columns: project.columns.map(column => {
+              if (column.id === columnId) {
+                return {
+                  ...column,
+                  tasks: column.tasks.filter(task => task.id !== taskId)
+                }
+              }
+              return column
+            })
           }
         }
         return project
