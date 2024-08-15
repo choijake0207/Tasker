@@ -51,6 +51,9 @@ body {
     font-family: "Radio Canada Big"; 
     border-bottom: 1px solid var(--links-color);
 }
+.nav-mobile-toggle {
+    display:none;
+}
 .highlight-text {
     color: var(--logo-color);
 }
@@ -146,5 +149,41 @@ body {
     }
 }
 
+
+@media (max-width: 430px) {
+    .root-layout {
+        display: flex;
+        flex-direction: column;
+    }
+    .nav-mobile-toggle {
+        display: block;
+    }
+    .side-nav-bar {
+        position: relative;
+        width: 100%;
+    }
+    .links-container {
+        display: none;
+    }
+    .links-container.expand {
+        display: flex;
+        z-index: 1000;
+        position: absolute;
+        top: 100%;
+        background: var(--foreground);
+        box-shadow: 5px 5px 5px var(--background);
+        animation-name: navExpand;
+        animation-duration: 2s;
+    }
+
+    @keyframes navExpand {
+        0% {
+            display: none;
+        }
+        100% {
+            display: flex;
+        }
+    }
+}
 
 
