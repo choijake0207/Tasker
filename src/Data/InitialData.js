@@ -9,7 +9,7 @@ export const initialProjects = [
                 name: "To Do's",
                 tasks: [
                     {
-                        id: 0,
+                        id: "0",
                         columnId: "toDo",
                         info: "Create API requests",
                         category: "",
@@ -22,7 +22,7 @@ export const initialProjects = [
                 name: "In Progress",
                 tasks: [
                     {
-                        id: 1,
+                        id: "1",
                         columnId: "inProgress",
                         info: "Configure database and ORM",
                         category: "",
@@ -35,7 +35,7 @@ export const initialProjects = [
                 name: "Completed",
                 tasks: [
                     {
-                        id: 2,
+                        id: "2",
                         columnId: "completed",
                         info: "Create UI prototype",
                         category: "Design",
