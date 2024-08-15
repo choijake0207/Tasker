@@ -6,10 +6,12 @@
 :root {
     --background: rgb(32,34,39);
     --foreground: rgb(41,43,49);
+
     --card: rgb(48, 51, 58);
     --nav-font-color: rgb(255, 255, 255);
     --links-color: rgb(162, 162, 162);
     --logo-color: rgb(82,100,191);
+    --logo-highlight: rgb(81, 109, 247);
 
 }
 body {
@@ -17,15 +19,17 @@ body {
     margin: 0;
     padding: 0;
     color: black;
-    overflow: hidden;
-    font-family: "satoshi variable" 
+    font-family: "satoshi variable" ;
+    overflow: hidden
 }
 #root {
     height: 100vh;
+    overflow: hidden;
+
 }
 .root-layout {
     display: grid;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 200px 1240px;
     height: 100%;
 }
 .side-nav-bar {
@@ -38,18 +42,21 @@ body {
 .side-nav-bar h1 {
     font-size: 1.75em;
     display: flex;
-    gap: 5px;
+    gap: 0px;
     align-items: center;
     color: var(--nav-font-color);
     padding: 15px;
     padding-top: 20px;
     margin: 0;
-    font-family: "Mononoki"; 
+    font-family: "Radio Canada Big"; 
     border-bottom: 1px solid var(--links-color);
 }
-.side-nav-bar h1 svg {
-    transform: translateY(0%);
+.highlight-text {
     color: var(--logo-color);
+}
+.side-nav-bar h1 svg {
+    color: var(--logo-highlight);
+    margin: 5px;
 }
 .links-container {
     color: var(--links-color);
@@ -71,6 +78,7 @@ body {
     user-select: none;
     margin: 0;
 }
+
 .links-container p > svg:last-of-type {
     margin-left: auto;
 }
@@ -96,7 +104,7 @@ body {
 }
 .project-link-container.close {
     animation-name: pullUp;
-    animation-duration: .3s;
+    animation-duration: .1s;
 }
 
 
@@ -115,10 +123,12 @@ body {
 .project-link-container svg {
     flex-shrink: 0;
 }
-
+.main-screen{
+    position: relative;
+}
 @keyframes dropDown {
     0% {
-        max-height: 0
+        max-height: 0;
     }
     100% {
         max-height: 300px;
@@ -127,10 +137,12 @@ body {
 @keyframes pullUp {
     0% {
         max-height: 300px;
+        opacity: 1
     }
    
     100% {
-        max-height: 0
+        max-height: 0;
+        opacity: 0
     }
 }
 
