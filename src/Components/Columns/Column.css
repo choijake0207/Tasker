@@ -1,9 +1,14 @@
 .column {
-    width: 290px;
     display: flex;
     flex-direction: column;
     background: var(--foreground);
     height: fit-content;
+    min-width: 290px;
+ 
+}
+.droppable {
+    background: var(--foreground);
+    
 }
 .column-header {
     padding: 15px;
@@ -19,6 +24,7 @@
     font-weight:500;
     color: white;
 
+
 }
 .column-header-name {
     display: flex;
@@ -28,13 +34,14 @@
 }
 .column-header-buttons {
     display: flex;
+    position: relative;
+
 }
 .column-header-buttons button {
     color: var(--links-color);
 }
 .column-header-buttons button:hover {
     color: white;
-    scale: 1.05;
 }
 .column-edit-button {
     background: none;
@@ -57,20 +64,4 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
-.add-column-btn {
-    background: none;
-    color: var(--nav-font-color);
-    font-weight: 500;
-    border: none;
-    font-size: 1em;
-    font-family: "satoshi variable";
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.column-form-header {
-    display: flex;
-    justify-content: center;
 }
