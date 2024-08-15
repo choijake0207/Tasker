@@ -98,34 +98,36 @@ export function ContextProvider({children}) {
     // dnd: drag task to column
     const moveTaskToColumn = (taskId, columnId, content) => {
       const task = content.columns.flatMap(column => column.tasks).find(task => task.id === taskId)
-      console.log(taskId)
+      console.log(columnId)
       const originColumn = content.columns.find(column => column.tasks.some(task => task.id === taskId))
       const targetColumn = content.columns.find(column => column.id === columnId)
       if (task && originColumn && targetColumn) {
-        const updatedColumns = content.columns.map(column => {
-          if (column.id === originColumn.id) {
-            return {
-              ...column,
-              tasks: column.tasks.filter(task => task.id !== taskId)
+        if (originColumn.id !== targetColumn.id) {
+          const updatedColumns = content.columns.map(column => {
+            if (column.id === originColumn.id) {
+              return {
+                ...column,
+                tasks: column.tasks.filter(task => task.id !== taskId)
+              }
             }
-          }
-          if (column.id === targetColumn.id) {
-            return {
-              ...column,
-              tasks: [...column.tasks, task]
+            if (column.id === targetColumn.id) {
+              return {
+                ...column,
+                tasks: [...column.tasks, task]
+              }
             }
-          }
-          return column
-        })
-        setProjects(prev => prev.map(project => {
-          if (project.id === content.id) {
-            return {
-              ...project,
-              columns: updatedColumns
+            return column
+          })
+          setProjects(prev => prev.map(project => {
+            if (project.id === content.id) {
+              return {
+                ...project,
+                columns: updatedColumns
+              }
             }
-          }
-          return project
-        }))
+            return project
+          }))
+        }
       }
       
     }
