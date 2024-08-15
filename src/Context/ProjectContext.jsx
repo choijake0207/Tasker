@@ -95,10 +95,43 @@ export function ContextProvider({children}) {
       setProjects(prev => prev.filter(project => project.id !== projectId))
     }
 
+    // dnd: drag task to column
+    const moveTaskToColumn = (taskId, columnId, content) => {
+      const task = content.columns.flatMap(column => column.tasks).find(task => task.id === taskId)
+      console.log(taskId)
+      const originColumn = content.columns.find(column => column.tasks.some(task => task.id === taskId))
+      const targetColumn = content.columns.find(column => column.id === columnId)
+      if (task && originColumn && targetColumn) {
+        const updatedColumns = content.columns.map(column => {
+          if (column.id === originColumn.id) {
+            return {
+              ...column,
+              tasks: column.tasks.filter(task => task.id !== taskId)
+            }
+          }
+          if (column.id === targetColumn.id) {
+            return {
+              ...column,
+              tasks: [...column.tasks, task]
+            }
+          }
+          return column
+        })
+        setProjects(prev => prev.map(project => {
+          if (project.id === content.id) {
+            return {
+              ...project,
+              columns: updatedColumns
+            }
+          }
+          return project
+        }))
+      }
+      
+    }
 
 
-
-    const values = {projects, setProjects, addTask, deleteTask, addProject, deleteProject, addColumn, deleteColumn}
+    const values = {projects, setProjects, addTask, deleteTask, addProject, deleteProject, addColumn, deleteColumn, moveTaskToColumn}
 
   return (
     <ProjectContext.Provider value={values}>
