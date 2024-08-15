@@ -13,44 +13,46 @@ export default function Column({column, tasks, color, content}) {
 
 
   return (
-    <div className="column">
-      {isFormOpen && 
-        <TaskForm 
-          columnId={column.id}
-          onClose={() => setIsFormOpen(false)}
-          content={content}
-        />
-      }
-      <header className="column-header" style={{borderBottom: `3px solid ${color}`}}>
-          <div className="column-header-name" >
-            <Circle size={".75em"} weight="fill" color={color}/>
-            <p>{column.name}</p>
-            <p>( {tasks.length} )</p>
-          </div>
-          <div className="column-header-buttons">
-            <button className="add-task-btn" onClick={()=> setIsFormOpen(!isFormOpen)}><Plus size="1.2em" weight="bold"/></button>
-            {isMenuOpen && <ColumnMenu content={content} column={column}/>}
-            <button className="column-edit-button" onClick={() => setIsMenuOpen(!isMenuOpen)}><DotsThreeOutlineVertical size="1.2em" weight="bold"/></button>
-          </div>
-      </header>
-      {tasks.length > 0 &&  
-        <Droppable columnId={column.id}>
-          <main>
-            {tasks.map(task => {
-              return (
-                <Task
-                  task={task}
-                  color={color}
-                  content={content}
-                />
-              )
-            })}
-          
-          </main>
-        </Droppable>
-      }
-      
+    <Droppable columnId={column.id}>
+      <div className="column">
+        {isFormOpen && 
+          <TaskForm 
+            columnId={column.id}
+            onClose={() => setIsFormOpen(false)}
+            content={content}
+          />
+        }
+        <header className="column-header" style={{borderBottom: `3px solid ${color}`}}>
+            <div className="column-header-name" >
+              <Circle size={".75em"} weight="fill" color={color}/>
+              <p>{column.name}</p>
+              <p>( {tasks.length} )</p>
+            </div>
+            <div className="column-header-buttons">
+              <button className="add-task-btn" onClick={()=> setIsFormOpen(!isFormOpen)}><Plus size="1.2em" weight="bold"/></button>
+              {isMenuOpen && <ColumnMenu content={content} column={column}/>}
+              <button className="column-edit-button" onClick={() => setIsMenuOpen(!isMenuOpen)}><DotsThreeOutlineVertical size="1.2em" weight="bold"/></button>
+            </div>
+        </header>
+        {tasks.length > 0 &&  
+          // <Droppable columnId={column.id}>
+            <main>
+              {tasks.map(task => {
+                return (
+                  <Task
+                    task={task}
+                    color={color}
+                    content={content}
+                  />
+                )
+              })}
+            
+            </main>
+          /* </Droppable> */
+        }
+        
 
-    </div>
+      </div>
+    </Droppable>
   )
 } 
