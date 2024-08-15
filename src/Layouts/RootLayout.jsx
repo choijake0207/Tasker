@@ -8,11 +8,15 @@ import { Note, CaretLeft, CaretDown, File, House, Folder} from 'phosphor-react'
 export default function RootLayout() {
     const {projects} = useContext(ProjectContext)
     const [expandProjects, setExpandProjects] = useState(false)
+    const [expandNav, setExpandNav] = useState(false)
   return (
     <div className="root-layout">
         <nav className="side-nav-bar">
-            <h1><Note/>Tasker</h1>
-            <div className="links-container">
+            <h1>
+                <Note/>Task<span className="highlight-text">er</span>
+                <CaretDown className="nav-mobile-toggle" onClick={() => setExpandNav(!expandNav)}/>
+            </h1>
+            <div className={expandNav ? "links-container expand" : "links-container"}>
                 <NavLink to="/"><House/>Home</NavLink>
                 <p onClick={() => setExpandProjects(!expandProjects)}><Folder/>Projects {expandProjects ? <CaretDown/> : <CaretLeft/>}</p>
                 <div className={`project-link-container ${expandProjects ? 'open' : 'close'}`}>
