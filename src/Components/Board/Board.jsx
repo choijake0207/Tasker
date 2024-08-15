@@ -1,17 +1,30 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import Column from '../Columns/Column'
 import "./Board.css"
 import { columnColors } from '../../Data/InitialData'
 import { PlusCircle, FolderOpen, Folder} from 'phosphor-react'
 import ColumnForm from '../Forms/ColumnForm'
 import { DndContext } from '@dnd-kit/core'
+import { ProjectContext } from '../../Context/ProjectContext'
  
 export default function Board({content}) {
   const [isFormOpen, setIsFormOpen] = useState(false)
+  const {moveTaskToColumn} = useContext(ProjectContext)
 
-  
+  const handleDragEnd = (event) => {
+    const {active, over} = event
+    if (!over) return
+    const [activeType, activeId] = active.id.split("/")
+    const [overType, overId] = over.id.split("/")
+    if (activeType === "task" && overType === "column") {
+      moveTaskToColumn(activeId, overId, content)
+    } 
+  }
+
+ 
+
   return (
-    <DndContext>
+    <DndContext onDragEnd={handleDragEnd}>
       <div className="board">
         {isFormOpen && <ColumnForm onClose={() => setIsFormOpen(false)} content={content}/>}
         <header className="board-header">
