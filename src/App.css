@@ -2,7 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&family=Saira:ital,wght@0,100..900;1,100..900&display=swap');
-
+@font-face {
+    font-family: "satoshi variable";
+    src: url("/src/Tools/Satoshi-Variable.ttf");
+}
 :root {
     --background: rgb(32,34,39);
     --foreground: rgb(41,43,49);
@@ -29,7 +32,7 @@ body {
 }
 .root-layout {
     display: grid;
-    grid-template-columns: 200px 1240px;
+    grid-template-columns: 200px 1fr;
     height: 100%;
 }
 .side-nav-bar {
@@ -154,6 +157,7 @@ body {
     .root-layout {
         display: flex;
         flex-direction: column;
+        width: 100vw;
     }
     .nav-mobile-toggle {
         display: block;
