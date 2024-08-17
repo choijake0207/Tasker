@@ -90,3 +90,13 @@ textarea {
         scale: 1;
     }
 }
+
+@media (max-width: 500px) {
+    .form-container {
+        width: 80%;
+        transform: translateY(10%)
+    }
+    .form-container h1 {
+        font-size: 1.75em;
+    }
+}
