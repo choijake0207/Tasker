@@ -141,7 +141,10 @@ body {
         opacity: 0
     }
 }
-@media (max-width: 500px) {
+
+
+
+@media (max-width: 800px) {
     .root-layout {
         display: flex;
         flex-direction: column;
@@ -158,7 +161,7 @@ body {
         position: absolute;
         top: 100%;
         height: 100vh;
-        width: 70%;
+        width: 40%;
         padding: 30px;
         background: var(--card);
         box-shadow: 5px 5px 5px var(--background);
