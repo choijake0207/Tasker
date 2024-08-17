@@ -141,7 +141,7 @@ body {
         opacity: 0
     }
 }
-@media (max-width: 430px) {
+@media (max-width: 500px) {
     .root-layout {
         display: flex;
         flex-direction: column;
@@ -160,7 +160,7 @@ body {
         height: 100vh;
         width: 70%;
         padding: 30px;
-        background: var(--foreground);
+        background: var(--card);
         box-shadow: 5px 5px 5px var(--background);
     }
     .links-container a, .links-container p{
