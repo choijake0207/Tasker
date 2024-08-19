@@ -109,6 +109,18 @@ export function ContextProvider({children}) {
     const addProject = (project) => {
       setProjects(prev => ([...prev, project]))
     }
+    const editProject = (updatedProject) => {
+      setProjects(prev => prev.map(project => {
+        if (project.id === updatedProject.id) {
+          return {
+            ...project,
+            updatedProject
+          }
+        } else {
+          return project
+        }
+      }))
+    }
     // delete project
     const deleteProject = (projectId) => {
       setProjects(prev => prev.filter(project => project.id !== projectId))
@@ -153,7 +165,7 @@ export function ContextProvider({children}) {
     }
 
 
-    const values = {projects, setProjects, addTask, deleteTask, addProject, deleteProject, addColumn, deleteColumn, moveTaskToColumn, editColumn}
+    const values = {projects, setProjects, addTask, deleteTask, addProject, deleteProject, addColumn, deleteColumn, moveTaskToColumn, editColumn, editProject}
 
   return (
     <ProjectContext.Provider value={values}>
