@@ -3,9 +3,10 @@ import { columnTemplate } from '../../Data/InitialData'
 import { ProjectContext } from '../../Context/ProjectContext'
 import { columnColors } from '../../Data/InitialData'
 
-export default function ColumnForm({onClose, content}) {
-    const {addColumn} = useContext(ProjectContext)
-    const [newColumn, setNewColumn] = useState(columnTemplate)
+export default function ColumnForm({isEdit, onClose, content, currentColumn}) {
+    const {addColumn, editColumn} = useContext(ProjectContext)
+    const [newColumn, setNewColumn] = useState(isEdit ? currentColumn : columnTemplate)
+ 
     const handleChange = (e) => {
         const {name, value} = e.target
         setNewColumn(prev => ({...prev, [name]: value}))
@@ -13,8 +14,12 @@ export default function ColumnForm({onClose, content}) {
  
     const createColumn = (e) => {
         e.preventDefault()
-        const column = {...newColumn, id: crypto.randomUUID()}
-        addColumn(content.id, column)
+        if (isEdit) {
+            editColumn(content.id, newColumn)
+        } else {
+            const column = {...newColumn, id: crypto.randomUUID()}
+            addColumn(content.id, column)
+        }
         setNewColumn(columnTemplate)
         onClose()
     }
@@ -22,7 +27,11 @@ export default function ColumnForm({onClose, content}) {
   return (
     <div className="form-overlay">
         <div className="form-container">
-            <h1><span className="highlight-text">Create</span> a new column</h1>
+            {isEdit ? 
+                <h1><span className="highlight-text">Edit</span> column</h1> 
+                : <h1><span className="highlight-text">Create</span> a new column</h1> 
+                
+            }
             <form className="form" onSubmit={createColumn}>
                 <label>Column Name</label>
                 <input
@@ -53,7 +62,7 @@ export default function ColumnForm({onClose, content}) {
                 </div>
                 <div className="form-btn-container">
                     <button className="close-btn"type="button" onClick={onClose}>Close</button>
-                    <button className="submit-btn"type="submit">Create</button>
+                    <button className="submit-btn"type="submit">{isEdit ? "Save" : "Submit"}</button>
                 </div>
             </form>
         </div>
