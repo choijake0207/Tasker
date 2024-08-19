@@ -15,7 +15,8 @@ export const initialProjects = [
                         category: "",
                         priority: "Medium"
                     }
-                ]
+                ],
+                color: "default"
             },
             {
                 id: "inProgress",
@@ -28,7 +29,8 @@ export const initialProjects = [
                         category: "",
                         priority: "Low"
                     },
-                ]
+                ],
+                color: "default"
             },
             {
                 id: "completed",
@@ -42,7 +44,7 @@ export const initialProjects = [
                         priority: "High"
                     }
                 ],
-                
+                color: "default"   
             }
         ]
     }
@@ -57,7 +59,8 @@ export const projectTemplate = {
 export const columnTemplate = {
     id: "",
     name: "",
-    tasks: []
+    tasks: [],
+    color: ""
 }
 export const taskTemplate = {
     id: "",
