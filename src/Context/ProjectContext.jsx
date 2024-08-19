@@ -111,9 +111,10 @@ export function ContextProvider({children}) {
               }
             }
             if (column.id === targetColumn.id) {
+              const updatedTask = {...task, columnId: targetColumn.id}
               return {
                 ...column,
-                tasks: [...column.tasks, task]
+                tasks: [...column.tasks, updatedTask]
               }
             }
             return column
