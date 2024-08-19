@@ -40,7 +40,15 @@ export default function Column({column, tasks, content}) {
             </div>
             <div className="column-header-buttons">
               <button className="add-task-btn" onClick={()=> setIsFormOpen(!isFormOpen)}><Plus size="1.2em" weight="bold"/></button>
-              {isMenuOpen && <MenuModal type="column" project={content} column={column} toggleEdit={() => setIsEditOn(true)}/>}
+              {isMenuOpen && 
+                <MenuModal 
+                  type="column" 
+                  project={content} 
+                  column={column} 
+                  toggleEdit={() => setIsEditOn(true)}
+                  onClose={() => setIsMenuOpen(false)}
+                />
+              }
               <button className="column-edit-button" onClick={() => setIsMenuOpen(!isMenuOpen)}><DotsThreeOutlineVertical size="1.2em" weight="bold"/></button>
             </div>
         </header>
