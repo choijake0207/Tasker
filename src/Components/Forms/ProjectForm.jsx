@@ -2,24 +2,31 @@ import React, {useState, useContext} from 'react'
 import { projectTemplate } from '../../Data/InitialData'
 import { ProjectContext } from '../../Context/ProjectContext'
 
-export default function ProjectForm({onClose}) {
-    const [newProject, setNewProject] = useState(projectTemplate)
-    const {addProject} = useContext(ProjectContext)
+export default function ProjectForm({onClose, project, isEdit}) {
+    const [newProject, setNewProject] = useState(isEdit ? project : projectTemplate)
+    const {addProject, editProject} = useContext(ProjectContext)
     const handleChange = (e) => {
         const {name, value} = e.target
         setNewProject(prev => ({...prev, [name]: value}))
     }
     const createProject = (e) => {
         e.preventDefault()
-        const project = {...newProject, id: crypto.randomUUID()}
-        addProject(project)
+        if (isEdit) {
+            editProject(newProject)
+        } else {
+            const project = {...newProject, id: crypto.randomUUID()}
+            addProject(project)
+        }
         setNewProject(projectTemplate)
         onClose()
     }
   return (
     <div className="form-overlay">
         <div className="form-container">
-            <h1><span className="highlight-text">Create</span> a new project</h1>
+            {isEdit ? 
+                <h1><span className="highlight-text">Edit</span> project</h1>
+                : <h1><span className="highlight-text">Create</span> a new project</h1>
+            }
             <form className="form" onSubmit={createProject}>
                 <label>Project Name</label>
                 <input
@@ -38,7 +45,7 @@ export default function ProjectForm({onClose}) {
                 />
                 <div className="form-btn-container">
                     <button className="close-btn"type="button" onClick={onClose}>Close</button>
-                    <button className="submit-btn"type="submit">Create</button>
+                    <button className="submit-btn"type="submit">{isEdit ? "Save" : "Create"}</button>
                     
                 </div>
             </form>
