@@ -1,15 +1,17 @@
 import React, {useState} from 'react'
 import Task from '../Task/Task'
-import ColumnMenu from '../Menus/ColumnMenu'
+import MenuModal from '../Menus/MenuModal'
 import "./Column.css"
 import { Circle, DotsThreeOutlineVertical, Plus } from 'phosphor-react'
 import TaskForm from '../Forms/TaskForm'
+import ColumnForm from '../Forms/ColumnForm'
 import Droppable from '../../Context/DnD/Droppable'
 
-export default function Column({column, tasks, color, content}) {
+export default function Column({column, tasks, content}) {
 
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isEditOn, setIsEditOn] = useState(false)
 
 
   return (
@@ -22,15 +24,23 @@ export default function Column({column, tasks, color, content}) {
             content={content}
           />
         }
-        <header className="column-header" style={{borderBottom: `3px solid ${color}`}}>
+        {isEditOn && 
+          <ColumnForm
+            isEdit={true}
+            currentColumn={column}
+            onClose={() => setIsEditOn(false)}
+            content={content}
+          />
+        }
+        <header className="column-header" style={{borderBottom: `3px solid ${column.color}`}}>
             <div className="column-header-name" >
-              <Circle size={".75em"} weight="fill" color={color}/>
+              <Circle size={".75em"} weight="fill" color={column.color}/>
               <p>{column.name}</p>
               <p>( {tasks.length} )</p>
             </div>
             <div className="column-header-buttons">
               <button className="add-task-btn" onClick={()=> setIsFormOpen(!isFormOpen)}><Plus size="1.2em" weight="bold"/></button>
-              {isMenuOpen && <ColumnMenu content={content} column={column}/>}
+              {isMenuOpen && <MenuModal type="column" project={content} column={column} toggleEdit={() => setIsEditOn(true)}/>}
               <button className="column-edit-button" onClick={() => setIsMenuOpen(!isMenuOpen)}><DotsThreeOutlineVertical size="1.2em" weight="bold"/></button>
             </div>
         </header>
@@ -41,7 +51,6 @@ export default function Column({column, tasks, color, content}) {
                 return (
                   <Task
                     task={task}
-                    color={color}
                     content={content}
                   />
                 )
