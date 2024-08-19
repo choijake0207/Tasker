@@ -1,6 +1,7 @@
 import React, {useState, useContext} from 'react'
 import { columnTemplate } from '../../Data/InitialData'
 import { ProjectContext } from '../../Context/ProjectContext'
+import { columnColors } from '../../Data/InitialData'
 
 export default function ColumnForm({onClose, content}) {
     const {addColumn} = useContext(ProjectContext)
@@ -8,6 +9,12 @@ export default function ColumnForm({onClose, content}) {
     const handleChange = (e) => {
         const {name, value} = e.target
         setNewColumn(prev => ({...prev, [name]: value}))
+    }
+    const handleColor = (color) => {
+        setNewColumn(prev => ({
+            ...prev,
+            color: color
+        }))
     }
     const createColumn = (e) => {
         e.preventDefault()
@@ -29,6 +36,20 @@ export default function ColumnForm({onClose, content}) {
                     onChange={handleChange}
                     value={newColumn.name}
                 />
+                <div className="column-color-picker">
+                    <label>Choose A Color:</label>
+                    {columnColors.map((color, index) => {
+                        return (
+                            <button 
+                                key={index}
+                                type="button"
+                                className="color-picker-btn"
+                                style={{background: color}}
+                                onClick={() => handleColor(color)}
+                            />
+                        )
+                    })}
+                </div>
                 <div className="form-btn-container">
                     <button className="close-btn"type="button" onClick={onClose}>Close</button>
                     <button className="submit-btn"type="submit">Create</button>
