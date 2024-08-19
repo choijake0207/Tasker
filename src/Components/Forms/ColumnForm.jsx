@@ -10,12 +10,7 @@ export default function ColumnForm({onClose, content}) {
         const {name, value} = e.target
         setNewColumn(prev => ({...prev, [name]: value}))
     }
-    const handleColor = (color) => {
-        setNewColumn(prev => ({
-            ...prev,
-            color: color
-        }))
-    }
+ 
     const createColumn = (e) => {
         e.preventDefault()
         const column = {...newColumn, id: crypto.randomUUID()}
@@ -36,17 +31,23 @@ export default function ColumnForm({onClose, content}) {
                     onChange={handleChange}
                     value={newColumn.name}
                 />
+                <label>Choose A Color:</label>
                 <div className="column-color-picker">
-                    <label>Choose A Color:</label>
                     {columnColors.map((color, index) => {
                         return (
-                            <button 
-                                key={index}
-                                type="button"
-                                className="color-picker-btn"
-                                style={{background: color}}
-                                onClick={() => handleColor(color)}
-                            />
+                            <label className="color-label">
+                                <input 
+                                    key={index}
+                                    name="color"
+                                    type="radio"
+                                    className="color-radio"
+                                    checked={newColumn.color === color}
+                                    onChange={handleChange}
+                                    value={color}
+                                    required
+                                />
+                                <span className="color-circle" style={{background: color}}/>
+                            </label>
                         )
                     })}
                 </div>
