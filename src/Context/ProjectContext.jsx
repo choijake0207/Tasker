@@ -114,7 +114,7 @@ export function ContextProvider({children}) {
         if (project.id === updatedProject.id) {
           return {
             ...project,
-            updatedProject
+            ...updatedProject
           }
         } else {
           return project
