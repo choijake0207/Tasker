@@ -19,7 +19,14 @@ export default function ProjectCard ({project}) {
                 />
             }
             <div className="project-card">
-                {isMenuOpen && <MenuModal type="project" project={project} toggleEdit={() => setIsEditOn(!isEditOn)}/>}
+                {isMenuOpen && 
+                    <MenuModal 
+                        type="project" 
+                        project={project} 
+                        toggleEdit={() => setIsEditOn(!isEditOn)}
+                        onClose={() => setIsMenuOpen(false)}
+                    />
+                }
                 <button className="toggle-menu-btn" onClick={() => setIsMenuOpen(!isMenuOpen)}><DotsThree size={"2em"}/></button>
                 <div className="project-card-text"onClick={() => navigate(`/projects/${project.name}`) }>
                     <h3>{project.name}</h3>
