@@ -35,13 +35,12 @@ export default function Board({content}) {
         </header>
         {content.columns.length > 0 ? 
           <main className="board-content">
-            {content.columns.map((column, index) => {
+            {content.columns.map((column) => {
               return (
                 <Column
                   key={column.id}
                   column={column}
                   content={content}
-                  color={column.color}
                   tasks={column.tasks}
                 />
               )
