@@ -41,7 +41,7 @@ export default function Board({content}) {
                   key={column.id}
                   column={column}
                   content={content}
-                  color={columnColors[index]}
+                  color={column.color === "default" ? columnColors[index] : column.color}
                   tasks={column.tasks}
                 />
               )
