@@ -1,7 +1,7 @@
 import React, {useContext, useRef, useEffect} from 'react'
 import { ProjectContext } from '../../Context/ProjectContext'
 import "./Menu.css"
-export default function MenuModal({type, project, column, toggleEdit, onClose}) {
+export default function MenuModal({type, project, column, task, toggleEdit, onClose}) {
     const {deleteProject, deleteColumn, deleteTask} = useContext(ProjectContext)
     const modalRef = useRef(null)
     const handleOutsideClick = (event) => {
@@ -23,7 +23,7 @@ export default function MenuModal({type, project, column, toggleEdit, onClose}) 
                 break;
             case "delete":
                 handleDelete()
-                break;
+                break;     
         }
         onClose()
     }
@@ -36,13 +36,15 @@ export default function MenuModal({type, project, column, toggleEdit, onClose}) 
             case "column":
                 deleteColumn(project.id, column.id)
                 break;
+            case "task":
+                deleteTask(project.id, column.id, task.id)
         }
     }
 
   return (
     <div className="popup-menu" id={`${type}-menu`} ref={modalRef}>
-        <button className="popup-edit-btn" onClick={() => handleInsideClick("edit")}>Edit</button>
-        <button  className="popup-delete-btn" onClick={() => handleInsideClick("delete")}>Delete</button>
+        <button className="popup-edit-btn" onClick={() => handleInsideClick("edit")} onPointerDown={(e) => e.stopPropagation()}>Edit</button>
+        <button  className="popup-delete-btn" onClick={() => handleInsideClick("delete")} onPointerDown={(e) => e.stopPropagation()}>Delete</button>
     </div>
   )
 }
