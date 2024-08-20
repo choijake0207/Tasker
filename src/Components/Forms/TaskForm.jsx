@@ -3,10 +3,10 @@ import { taskTemplate } from '../../Data/InitialData'
 import "./Form.css"
 import { ProjectContext } from '../../Context/ProjectContext'
 
-export default function TaskForm({columnId, onClose, content}) {
+export default function TaskForm({columnId, onClose, content, isEdit, currentTask}) {
 
-    const [newTask, setNewTask] = useState(taskTemplate)
-    const {addTask} = useContext(ProjectContext)
+    const [newTask, setNewTask] = useState(isEdit ? currentTask : taskTemplate)
+    const {addTask, editTask} = useContext(ProjectContext)
     const handleChange = (e) => {
         const {name,value} = e.target
         setNewTask(prev => ({...prev,[name]: value }))
@@ -14,8 +14,12 @@ export default function TaskForm({columnId, onClose, content}) {
 
     const createTask = (e) => {
         e.preventDefault()
-        const task = {...newTask, id: crypto.randomUUID(), columnId: columnId}
-        addTask(content.id, columnId, task)
+        if (isEdit) {
+            editTask(content.id, columnId, newTask)
+        } else {
+            const task = {...newTask, id: crypto.randomUUID(), columnId: columnId}
+            addTask(content.id, columnId, task)
+        }
         setNewTask(taskTemplate)
         onClose()
     }
@@ -23,7 +27,10 @@ export default function TaskForm({columnId, onClose, content}) {
   return (
     <div className="form-overlay">
         <div className="form-container">
-            <h1><span className="highlight-text">Create</span> a new task</h1>
+            {isEdit ? 
+                <h1><span className="highlight-text">Edit</span> task</h1>
+                : <h1><span className="highlight-text">Create</span> a new task</h1>
+            }
             <form className="form" onSubmit={createTask}>
                 <label>Task Description</label>
                 <textarea
@@ -57,7 +64,7 @@ export default function TaskForm({columnId, onClose, content}) {
                 </select>
                 <div className="form-btn-container">
                     <button className="close-btn"type="button" onClick={onClose}>Close</button>
-                    <button className="submit-btn"type="submit">Create</button>
+                    <button className="submit-btn"type="submit">{isEdit ? "Save" : "Add"}</button>
                     
                 </div>
 
