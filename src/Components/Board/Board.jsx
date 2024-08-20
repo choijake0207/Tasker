@@ -26,7 +26,7 @@ export default function Board({content}) {
 
   return (
     <DndContext onDragEnd={handleDragEnd}>
-      <Droppable isBoard={true} boardId={content.id}>
+      {/* <Droppable isBoard={true} boardId={content.id}> */}
         <div className="board">
           {isFormOpen && <ColumnForm onClose={() => setIsFormOpen(false)} content={content}/>}
           <header className="board-header">
@@ -57,7 +57,7 @@ export default function Board({content}) {
             </main>
           }
         </div>
-      </Droppable>
+      {/* </Droppable> */}
     </DndContext>
   )
 }

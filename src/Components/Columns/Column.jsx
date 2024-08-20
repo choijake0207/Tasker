@@ -16,8 +16,8 @@ export default function Column({column, tasks, content}) {
 
 
   return (
-    <Draggable columnId={column.id} isColumn={true}>
-      <Droppable columnId={column.id}>
+    // <Draggable columnId={column.id} isColumn={true}>
+      <Droppable columnId={column.id} isBoard={false}>
         <div className="column">
           {isFormOpen && 
             <TaskForm 
@@ -71,6 +71,6 @@ export default function Column({column, tasks, content}) {
 
         </div>
       </Droppable>
-    </Draggable>
+    // </Draggable>
   )
 } 
