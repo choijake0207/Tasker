@@ -42,6 +42,34 @@ export function ContextProvider({children}) {
         } return project
       }))
     }
+    // edit task
+    const editTask = (projectId, columnId, updatedTask) => {
+      setProjects(prev => prev.map(project => {
+        if (project.id === projectId) {
+          return {
+            ...project,
+            columns: project.columns.map(column => {
+              if (column.id === columnId) {
+                return {
+                  ...column,
+                  tasks: column.tasks.map(task => {
+                    if (task.id === updatedTask.id) {
+                      return {
+                        ...task,
+                        ...updatedTask
+                      }
+                    }
+                    return task
+                  })
+                }
+              }
+              return column
+            })
+          }
+        }
+        return project
+      }))
+    }
     // delete task
     const deleteTask = (projectId, columnId, taskId) => {
       setProjects(prev => prev.map(project => {
@@ -165,7 +193,7 @@ export function ContextProvider({children}) {
     }
 
 
-    const values = {projects, setProjects, addTask, deleteTask, addProject, deleteProject, addColumn, deleteColumn, moveTaskToColumn, editColumn, editProject}
+    const values = {projects, setProjects, addTask, deleteTask, addProject, deleteProject, addColumn, deleteColumn, moveTaskToColumn, editColumn, editProject, editTask}
 
   return (
     <ProjectContext.Provider value={values}>
