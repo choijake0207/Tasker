@@ -20,6 +20,10 @@ export default function Task({task, content, column}) {
       {isEditOn &&
         <TaskForm
           onClose={() => setIsEditOn(false)}
+          isEdit={true}
+          currentTask={task}
+          content={content}
+          columnId={column.id}
         />
       }
       <Draggable taskId={task.id}>
