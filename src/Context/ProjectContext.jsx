@@ -52,15 +52,9 @@ export function ContextProvider({children}) {
               if (column.id === columnId) {
                 return {
                   ...column,
-                  tasks: column.tasks.map(task => {
-                    if (task.id === updatedTask.id) {
-                      return {
-                        ...task,
-                        ...updatedTask
-                      }
-                    }
-                    return task
-                  })
+                  tasks: column.tasks.map(task => 
+                    task.id === updatedTask.id ? {...task, ...updatedTask} : task
+                  )
                 }
               }
               return column
@@ -105,20 +99,14 @@ export function ContextProvider({children}) {
     const editColumn = (projectId, updatedColumn) => {
       setProjects(prev => prev.map(project => {
         if (project.id === projectId) {
-          const updatedColumns = project.columns.map(column => {
-            if (column.id === updatedColumn.id) {
-              return updatedColumn
-            } else {
-              return column
-            }
-          })
           return {
             ...project,
-            columns: updatedColumns
+            columns: project.columns.map(column => 
+              column.id === updatedColumn.id ? {...column, ...updatedColumn} : column
+            )
           }
-        } else {
-          return project
         }
+        return project
       }))
     }
     const deleteColumn = (projectId, columnId) => {
@@ -138,16 +126,9 @@ export function ContextProvider({children}) {
       setProjects(prev => ([...prev, project]))
     }
     const editProject = (updatedProject) => {
-      setProjects(prev => prev.map(project => {
-        if (project.id === updatedProject.id) {
-          return {
-            ...project,
-            ...updatedProject
-          }
-        } else {
-          return project
-        }
-      }))
+      setProjects(prev => prev.map(project => 
+        project.id === updatedProject.id ? {...project, ...updatedProject} : project
+      ))
     }
     // delete project
     const deleteProject = (projectId) => {
