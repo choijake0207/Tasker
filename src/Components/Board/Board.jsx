@@ -10,16 +10,12 @@ import Droppable from '../../Context/DnD/Droppable'
  
 export default function Board({content}) {
   const [isFormOpen, setIsFormOpen] = useState(false)
-  const {moveTaskToColumn} = useContext(ProjectContext)
+  const {handleTaskMove} = useContext(ProjectContext)
 
   const handleDragEnd = (event) => {
     const {active, over} = event
     if (!over) return
-    const [activeType, activeId] = active.id.split("/")
-    const [overType, overId] = over.id.split("/")
-    if (activeType === "task" && overType === "column") {
-      moveTaskToColumn(activeId, overId, content)
-    } 
+    handleTaskMove(active, over, content)
   }
 
   
