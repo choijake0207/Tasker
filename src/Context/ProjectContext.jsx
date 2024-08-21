@@ -96,6 +96,7 @@ export function ContextProvider({children}) {
         return project
       }))
     }
+    // edit columns
     const editColumn = (projectId, updatedColumn) => {
       setProjects(prev => prev.map(project => {
         if (project.id === projectId) {
@@ -109,6 +110,7 @@ export function ContextProvider({children}) {
         return project
       }))
     }
+    // delete columns
     const deleteColumn = (projectId, columnId) => {
       setProjects(prev => prev.map(project => {
         if (project.id === projectId) {
@@ -125,6 +127,7 @@ export function ContextProvider({children}) {
     const addProject = (project) => {
       setProjects(prev => ([...prev, project]))
     }
+    // edit projects
     const editProject = (updatedProject) => {
       setProjects(prev => prev.map(project => 
         project.id === updatedProject.id ? {...project, ...updatedProject} : project
@@ -135,46 +138,102 @@ export function ContextProvider({children}) {
       setProjects(prev => prev.filter(project => project.id !== projectId))
     }
 
-    // dnd: drag task to column
-    const moveTaskToColumn = (taskId, columnId, content) => {
-      const task = content.columns.flatMap(column => column.tasks).find(task => task.id === taskId)
-      console.log(columnId)
-      const originColumn = content.columns.find(column => column.tasks.some(task => task.id === taskId))
-      const targetColumn = content.columns.find(column => column.id === columnId)
-      if (task && originColumn && targetColumn) {
-        if (originColumn.id !== targetColumn.id) {
-          const updatedColumns = content.columns.map(column => {
-            if (column.id === originColumn.id) {
-              return {
-                ...column,
-                tasks: column.tasks.filter(task => task.id !== taskId)
-              }
-            }
-            if (column.id === targetColumn.id) {
-              const updatedTask = {...task, columnId: targetColumn.id}
-              return {
-                ...column,
-                tasks: [...column.tasks, updatedTask]
-              }
-            }
-            return column
-          })
-          setProjects(prev => prev.map(project => {
-            if (project.id === content.id) {
-              return {
-                ...project,
-                columns: updatedColumns
-              }
-            }
-            return project
-          }))
-        }
-      }
+    // dnd: drag task to different column
+    // const moveTaskToColumn = (taskId, columnId, content) => {
+    //   const task = content.columns.flatMap(column => column.tasks).find(task => task.id === taskId)
+    //   console.log(columnId)
+    //   const originColumn = content.columns.find(column => column.tasks.some(task => task.id === taskId))
+    //   const targetColumn = content.columns.find(column => column.id === columnId)
+    //   if (task && originColumn && targetColumn) {
+    //     if (originColumn.id !== targetColumn.id) {
+    //       const updatedColumns = content.columns.map(column => {
+    //         if (column.id === originColumn.id) {
+    //           return {
+    //             ...column,
+    //             tasks: column.tasks.filter(task => task.id !== taskId)
+    //           }
+    //         }
+    //         if (column.id === targetColumn.id) {
+    //           const updatedTask = {...task, columnId: targetColumn.id}
+    //           return {
+    //             ...column,
+    //             tasks: [...column.tasks, updatedTask]
+    //           }
+    //         }
+    //         return column
+    //       })
+    //       setProjects(prev => prev.map(project => {
+    //         if (project.id === content.id) {
+    //           return {
+    //             ...project,
+    //             columns: updatedColumns
+    //           }
+    //         }
+    //         return project
+    //       }))
+    //     }
+    //   }
+    // }
+    const handleTaskMove = (active, over, content) => {
+      const [activeType, activeId] = active.id.split("/")
+      const [overType, overId] = over.id.split("/")
+      console.log(overType)
+      const task = content.columns.flatMap(column => column.tasks).find(task => task.id === activeId)
+      const originColumn = content.columns.find(column => column.tasks.some(task => task.id === activeId))
       
+      // check whether over is task or column
+      let targetTaskId 
+      let targetColumnId
+      if (overType === "column") {
+        targetColumnId = overId
+        targetTaskId = null
+        return
+      } else if (overType === "task") {
+        targetTaskId = overId
+        const targetColumn = content.columns.find(column => column.tasks.some(task => task.id === overId))
+        targetColumnId = targetColumn.id
+      }
+
+      // same column movement
+      if (originColumn.id === targetColumnId) {
+        // if task-over-task, target index / if task-over-column, append to end of array
+        const targetIndex = targetTaskId ? originColumn.tasks.findIndex(task => task.id === targetTaskId) : originColumn.tasks.length
+        // filter out active task
+        const updatedTaskArray = originColumn.tasks.filter(task => task.id !== activeId)
+        // insert active task
+        updatedTaskArray.splice(targetIndex, 0, task)
+        // create updated columns
+        const updatedColumns = content.columns.map(column => {
+          if (column.id === originColumn.id) {
+            return {
+              ...column,
+              tasks: updatedTaskArray
+            }
+          }
+          return column
+        })
+        setProjects(prev => prev.map(project => {
+          if (project.id === content.id) {
+            return {
+              ...project,
+              columns: updatedColumns
+            }
+          }
+          return project
+        }))
+        return
+      }
+
+      // different column movement
+
     }
+     
+    
+   
 
 
-    const values = {projects, setProjects, addTask, deleteTask, addProject, deleteProject, addColumn, deleteColumn, moveTaskToColumn, editColumn, editProject, editTask}
+
+    const values = {projects, setProjects, addTask, deleteTask, addProject, deleteProject, addColumn, deleteColumn, editColumn, editProject, editTask, handleTaskMove}
 
   return (
     <ProjectContext.Provider value={values}>
