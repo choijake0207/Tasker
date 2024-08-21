@@ -187,7 +187,6 @@ export function ContextProvider({children}) {
       if (overType === "column") {
         targetColumnId = overId
         targetTaskId = null
-        return
       } else if (overType === "task") {
         targetTaskId = overId
         const targetColumn = content.columns.find(column => column.tasks.some(task => task.id === overId))
@@ -223,8 +222,46 @@ export function ContextProvider({children}) {
         }))
         return
       }
-
       // different column movement
+      if (originColumn.id !== targetColumnId) {
+        const targetColumn = content.columns.find(column => column.id === targetColumnId)
+        if (!targetColumn) {
+          console.log("No Target Column")
+        }
+        // remove task from origin
+        const updatedOriginTasksArray = originColumn.tasks.filter(task => task.id !== activeId)
+        // insert task 
+        const updatedTargetTasksArray = [...targetColumn.tasks]
+        const targetIndex = targetTaskId ? updatedTargetTasksArray.findIndex(task => task.id === targetTaskId) : updatedTargetTasksArray.length
+        console.log(targetIndex)
+        updatedTargetTasksArray.splice(targetIndex, 0, task)
+        // create updated columns
+        const updatedColumns = content.columns.map(column => {
+          if (column.id === originColumn.id) {
+            return {
+              ...column,
+              tasks: updatedOriginTasksArray
+            }
+          }
+          if (column.id === targetColumnId) {
+            return {
+              ...column,
+              tasks: updatedTargetTasksArray
+            }
+          }
+          return column
+        })
+        // set state
+        setProjects(prev => prev.map(project => {
+          if (project.id === content.id) {
+            return {
+              ...project,
+              columns: updatedColumns
+            }
+          }
+          return project
+        }))
+      }
 
     }
      
