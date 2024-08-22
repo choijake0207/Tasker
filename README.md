@@ -2,4 +2,7 @@
 
 A customizable kanban board for individual use built with React and Dnd-kit!
 
-<img src="https://github.com/user-attachments/assets/95ed2833-7fe5-4fa4-b287-afdad26c9eb0" alt="demo-gif" width="800">
+
+
+<img src="https://github.com/user-attachments/assets/fd703eea-0e04-4659-8268-220906355e5c">
+
