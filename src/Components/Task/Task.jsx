@@ -27,7 +27,7 @@ export default function Task({task, content, column}) {
           columnId={column.id}
         />
       }
-      <Draggable taskId={task.id}>
+      <Draggable taskId={task.id} columnId={column.id}>
         <Droppable type="task" taskId={task.id}>
           <div className="task">
             {isMenuOpen && 

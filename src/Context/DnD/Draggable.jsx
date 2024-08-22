@@ -1,10 +1,10 @@
 import React from 'react'
 import { useDraggable } from '@dnd-kit/core'
+import "./dnd.css"
 
-export default function Draggable({children, taskId, columnId, isColumn}) {
-    const id = isColumn ? `column/${columnId}` : `task/${taskId}`
+export default function Draggable({children, taskId}) {
     const {attributes, listeners, setNodeRef, transform, isDragging} = useDraggable({
-        id: id,
+        id: `task/${taskId}`
       })
     const style = transform ? {transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`} : undefined
 

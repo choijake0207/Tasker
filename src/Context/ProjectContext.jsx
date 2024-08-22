@@ -176,6 +176,7 @@ export function ContextProvider({children}) {
     // }
     const handleTaskMove = (active, over, content) => {
       const [activeType, activeId] = active.id.split("/")
+      console.log(activeId)
       const [overType, overId] = over.id.split("/")
       console.log(overType)
       const task = content.columns.flatMap(column => column.tasks).find(task => task.id === activeId)
