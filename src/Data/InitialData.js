@@ -64,7 +64,6 @@ export const columnTemplate = {
 }
 export const taskTemplate = {
     id: "",
-    columnId: "",
     info: "",
     category: "",
     priority: ""
