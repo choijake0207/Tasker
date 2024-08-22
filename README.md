@@ -12,7 +12,7 @@ Tasker is merely a self-excersise so that I could become familiar with the @dnd-
 
 ### Built With
 * React.js
-* "@dnd-kit/core"
+* @dnd-kit/core
 
 ## Pending/Potential Improvements
 - [ ] implementation of useSortable hook to animate task movements
