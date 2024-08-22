@@ -47,7 +47,7 @@ body {
 }
 .nav-mobile-toggle {
     display:none;
-    margin-right: 15px;
+    margin-right: 5px;
 }
 .highlight-text {
     color: var(--logo-color);
@@ -161,19 +161,19 @@ body {
         position: absolute;
         top: 100%;
         height: 100vh;
-        width: 40%;
+        width: 250px;
         padding: 30px;
         background: var(--card);
         box-shadow: 5px 5px 5px var(--background);
     }
     .links-container a, .links-container p{
-        font-size: 1.75em;
+        font-size: 1.25em;
     }
     .project-link-container {
         gap: 15px;
     }
     .project-link-container a {
-        font-size: 1.5em;
+        font-size: 1em;
     }
     .links-container.expand {
         display: flex;
