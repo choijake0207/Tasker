@@ -2,8 +2,8 @@
 
 A customizable kanban board for individual use built with React and Dnd-kit!
 
+![TaskerDemo](https://github.com/user-attachments/assets/8423d834-fafa-4946-a33a-e0108b234251)
 
 
 
 
-![TaskerGif (1)](https://github.com/user-attachments/assets/bbaab8b9-9317-47e5-814d-aa2e3871da03)
