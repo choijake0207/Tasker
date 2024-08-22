@@ -79,7 +79,25 @@ textarea {
     border: none;
     font-weight: 400;
 }
-
+.column-color-picker {
+    display: flex;
+    gap: 5px;
+}
+.color-radio {
+    display: none;
+}
+.color-circle {
+    display: inline-block;
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+}
+.color-label {
+    display: inline-block;
+}
+.color-radio:checked + .color-circle {
+    border: 2px solid white;
+}
 @keyframes popUp {
     0% {
    
