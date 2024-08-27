@@ -36,7 +36,7 @@ export default function TaskForm({columnId, onClose, content, isEdit, currentTas
                 <textarea
                     className="info-input"
                     name="info"
-                    maxLength={50}
+                    maxLength={100}
                     value={newTask.info}
                     onChange={handleChange}
                     required
@@ -48,6 +48,7 @@ export default function TaskForm({columnId, onClose, content, isEdit, currentTas
                     name="category"
                     value={newTask.category}
                     onChange={handleChange}
+                    maxLength={15}
                 />
                 <label>Priority Level:</label>
                 <select
