@@ -56,9 +56,9 @@ export default function Task({task, content, column}) {
             <section className="task-details">
               <h4 className="task-info">{task.info}</h4>
             </section>
-            <footer className="task-footer">
+            {/* <footer className="task-footer">
               <p className="task-date">Date Created</p>
-            </footer>
+            </footer> */}
           </div>
         </Droppable>
       </Draggable>
