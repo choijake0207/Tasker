@@ -9,6 +9,7 @@
     align-items: flex-start;
     position: relative;
     touch-action: none;
+    cursor: pointer;
 }
 .task-header {
     display: flex;
@@ -25,6 +26,10 @@
     background: none;
     color: var(--links-color);
     padding: 0;
+    cursor: pointer;
+}
+.task-edit-btn:hover {
+    color: white;
 }
 .task-header p {
     margin: 0;
@@ -37,20 +42,26 @@
     border-radius: 5px;
 }
 .task-category {
-    background: rgba(128, 128, 128, 0.51);
-}
-.task-priority {
-    color: white;
+    background: rgba(128, 128, 128, 0.197);
+    color: var(--links-color);
 }
 
+
 .High {
-    background: rgb(255, 0, 72);
+    background: rgba(255, 0, 72, 0.169);
+    color: rgb(255,0,72)
 }
 .Medium {
-    background: rgb(234, 138, 13)
+    background: rgba(234, 138, 13, 0.196);
+    color: rgb(234,138,13);
 }
 .Low {
-    background: rgb(4, 175, 4);
+    background: rgba(4, 175, 4, 0.221);
+    color: rgb(4, 175, 4);
+}
+.task-details {
+    overflow-wrap: break-word;
+    width: 100%;
 }
 .task-info {
     font-weight: 500;
