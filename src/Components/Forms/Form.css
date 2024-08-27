@@ -82,9 +82,11 @@ textarea {
 .column-color-picker {
     display: flex;
     gap: 5px;
+    height: 35px;
 }
 .color-radio {
-    display: none;
+    opacity: 0;
+    position: absolute
 }
 .color-circle {
     display: inline-block;
