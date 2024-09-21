@@ -3,7 +3,7 @@
     flex-direction: column;
     background: var(--foreground);
     height: fit-content;
-    min-width: 290px;
+    width: 290px;
  
 }
 .droppable {

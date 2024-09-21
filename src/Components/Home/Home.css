@@ -48,6 +48,7 @@
     transition: .1s;
     border: 2px solid rgb(53, 56, 63);
     color: white;
+    position: relative;
 }
 .project-card:hover {
     border: 2px solid var(--logo-highlight);
@@ -55,7 +56,7 @@
 .project-card:hover h3 {
     color: var(--logo-highlight)
 }
-.project-card button {
+.toggle-menu-btn {
     place-self: flex-end;
     background: none;
     border: none;
@@ -63,10 +64,10 @@
     color: var(--links-color);
     padding: 0;
 }
-.project-card button:hover {
+.toggle-menu-btn:hover {
     color: white;
 }
-.project-card div {
+.project-card-text {
     height: 100%;
     cursor: pointer;
 }

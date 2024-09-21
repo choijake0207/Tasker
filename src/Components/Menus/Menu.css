@@ -4,10 +4,10 @@
     background: var(--background);
     display: flex;
     flex-direction: column;
-    top: 100%;
     width: 100px;
     border-radius: 5px;
     box-shadow: 3px 3px 10px vaR(--background);
+
 }
 .popup-delete-btn, .popup-edit-btn {
     background: none;
@@ -15,8 +15,21 @@
     border: none;
     font-weight: bold;
     font-family: "satoshi variable";
-    cursor:pointer
+    cursor:pointer;
+    color: var(--links-color)
+}
+.popup-menu > .popup-edit-btn:hover {
+    color: white;
 }
 .popup-menu > .popup-delete-btn:hover {
     color: red;
+}
+#project-menu {
+    top: 20%;
+    left: 50%;
+
+}
+#task-menu {
+    top: 5%;
+    left: 55%;
 }

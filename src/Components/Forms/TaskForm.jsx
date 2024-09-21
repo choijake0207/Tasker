@@ -36,7 +36,7 @@ export default function TaskForm({columnId, onClose, content, isEdit, currentTas
                 <textarea
                     className="info-input"
                     name="info"
-                    maxLength={100}
+                    maxLength={200}
                     value={newTask.info}
                     onChange={handleChange}
                     required

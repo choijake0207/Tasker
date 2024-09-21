@@ -2,6 +2,7 @@ import React, {useState, useContext} from 'react'
 import { columnTemplate } from '../../Data/InitialData'
 import { ProjectContext } from '../../Context/ProjectContext'
 import { columnColors } from '../../Data/InitialData'
+import "./Form.css"
 
 export default function ColumnForm({isEdit, onClose, content, currentColumn}) {
     const {addColumn, editColumn} = useContext(ProjectContext)
@@ -39,14 +40,16 @@ export default function ColumnForm({isEdit, onClose, content, currentColumn}) {
                     name="name"
                     onChange={handleChange}
                     value={newColumn.name}
+                    autoComplete="off"
+                    maxLength={21}
+                    required
                 />
                 <label>Choose A Color:</label>
                 <div className="column-color-picker">
                     {columnColors.map((color, index) => {
                         return (
-                            <label className="color-label">
+                            <label className="color-label" key={index}>
                                 <input 
-                                    key={index}
                                     name="color"
                                     type="radio"
                                     className="color-radio"

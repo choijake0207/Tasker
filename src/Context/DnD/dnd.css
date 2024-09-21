@@ -1,8 +1,10 @@
 .draggable{
     box-shadow: 5px 5px 5px var(--background);
     z-index: 1000;
-    touch-action: none;
+
 }
+
 .droppable {
     background: var(--foreground);
 }
+
