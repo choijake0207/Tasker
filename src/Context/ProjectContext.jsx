@@ -176,9 +176,7 @@ export function ContextProvider({children}) {
     // }
     const handleTaskMove = (active, over, content) => {
       const [activeType, activeId] = active.id.split("/")
-      console.log(activeId)
       const [overType, overId] = over.id.split("/")
-      console.log(overType)
       const task = content.columns.flatMap(column => column.tasks).find(task => task.id === activeId)
       const originColumn = content.columns.find(column => column.tasks.some(task => task.id === activeId))
       
@@ -227,14 +225,12 @@ export function ContextProvider({children}) {
       if (originColumn.id !== targetColumnId) {
         const targetColumn = content.columns.find(column => column.id === targetColumnId)
         if (!targetColumn) {
-          console.log("No Target Column")
         }
         // remove task from origin
         const updatedOriginTasksArray = originColumn.tasks.filter(task => task.id !== activeId)
         // insert task 
         const updatedTargetTasksArray = [...targetColumn.tasks]
         const targetIndex = targetTaskId ? updatedTargetTasksArray.findIndex(task => task.id === targetTaskId) : updatedTargetTasksArray.length
-        console.log(targetIndex)
         updatedTargetTasksArray.splice(targetIndex, 0, task)
         // create updated columns
         const updatedColumns = content.columns.map(column => {
