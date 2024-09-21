@@ -16,7 +16,7 @@ export const initialProjects = [
                         priority: "Medium"
                     }
                 ],
-                color: "rgb(255,68,117)"
+                color: "rgb(255, 68, 117)"
             },
             {
                 id: "inProgress",
@@ -30,7 +30,7 @@ export const initialProjects = [
                         priority: "Low"
                     },
                 ],
-                color: "rgb(255,143,87)"
+                color: "rgb(255, 143, 87)"
             },
             {
                 id: "completed",
@@ -44,7 +44,7 @@ export const initialProjects = [
                         priority: "High"
                     }
                 ],
-                color: "rgb(203,159,53"  
+                color: "rgb(203, 159, 53)"  
             }
         ]
     }
