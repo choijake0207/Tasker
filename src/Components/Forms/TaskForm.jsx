@@ -2,6 +2,7 @@ import React, {useState, useContext} from 'react'
 import { taskTemplate } from '../../Data/InitialData'
 import "./Form.css"
 import { ProjectContext } from '../../Context/ProjectContext'
+import {v4 as uuidV4} from 'uuid'
 
 export default function TaskForm({columnId, onClose, content, isEdit, currentTask}) {
 
@@ -17,7 +18,7 @@ export default function TaskForm({columnId, onClose, content, isEdit, currentTas
         if (isEdit) {
             editTask(content.id, columnId, newTask)
         } else {
-            const task = {...newTask, id: crypto.randomUUID(), columnId: columnId}
+            const task = {...newTask, id: uuidV4(), columnId: columnId}
             addTask(content.id, columnId, task)
         }
         setNewTask(taskTemplate)

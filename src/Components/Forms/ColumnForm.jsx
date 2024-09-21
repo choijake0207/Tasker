@@ -2,6 +2,7 @@ import React, {useState, useContext} from 'react'
 import { columnTemplate } from '../../Data/InitialData'
 import { ProjectContext } from '../../Context/ProjectContext'
 import { columnColors } from '../../Data/InitialData'
+import {v4 as uuidV4} from 'uuid'
 import "./Form.css"
 
 export default function ColumnForm({isEdit, onClose, content, currentColumn}) {
@@ -18,7 +19,7 @@ export default function ColumnForm({isEdit, onClose, content, currentColumn}) {
         if (isEdit) {
             editColumn(content.id, newColumn)
         } else {
-            const column = {...newColumn, id: crypto.randomUUID()}
+            const column = {...newColumn, id: uuidV4()}
             addColumn(content.id, column)
         }
         setNewColumn(columnTemplate)

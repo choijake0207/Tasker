@@ -1,6 +1,8 @@
 import React, {useState, useContext} from 'react'
 import { projectTemplate } from '../../Data/InitialData'
 import { ProjectContext } from '../../Context/ProjectContext'
+import {v4 as uuidV4} from 'uuid'
+
 
 export default function ProjectForm({onClose, project, isEdit}) {
     const [newProject, setNewProject] = useState(isEdit ? project : projectTemplate)
@@ -14,7 +16,7 @@ export default function ProjectForm({onClose, project, isEdit}) {
         if (isEdit) {
             editProject(newProject)
         } else {
-            const project = {...newProject, id: crypto.randomUUID()}
+            const project = {...newProject, id: uuidV4()}
             addProject(project)
         }
         setNewProject(projectTemplate)
