@@ -42,7 +42,7 @@ export default function TaskForm({columnId, onClose, content, isEdit, currentTas
                     onChange={handleChange}
                     required
                 />
-                <label>Category Tags (optional)</label>
+                <label>Category Tag (optional)</label>
                 <input
                     className="category-input"
                     type="text"

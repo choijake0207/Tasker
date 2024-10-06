@@ -43,6 +43,7 @@ export default function ProjectForm({onClose, project, isEdit}) {
                 <textarea
                     value={newProject.description}
                     name="description"
+                    maxLength={150}
                     onChange={handleChange}
                 />
                 <div className="form-btn-container">

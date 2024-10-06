@@ -70,7 +70,6 @@
 .project-card-text {
     height: 100%;
     cursor: pointer;
-    border: 1px solid red;
 }
 
 .project-card h3 {
@@ -81,7 +80,6 @@
 .project-card p {
     padding: 0;
     margin-top: 10px;
-    border: 1px solid green;
     word-wrap: break-word;
     overflow: hidden;
 }
