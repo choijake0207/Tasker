@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
+import { createHashRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
 import RootLayout from './Layouts/RootLayout'
 import { ProjectContext } from './Context/ProjectContext'
 import Board from './Components/Board/Board'
@@ -9,7 +9,7 @@ import "./App.css"
 export default function App() {
   const {projects} = useContext(ProjectContext)
 
-  const router = createBrowserRouter(
+  const router = createHashRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout/>}>
         <Route index element={<Home projects={projects}/>}/>
